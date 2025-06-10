@@ -1,14 +1,10 @@
 # Welcome to my passion...
 
-<div align="center">
-  <img src="./Professional-Headshot-2024.jpg" alt="Nakia Muhammad - Cybersecurity Professional" width="200" style="border-radius: 50%;">
-</div>
+![Image](https://github.com/user-attachments/assets/c4dda4d5-4637-4aa6-8784-42b4dc6a0d27)
 
 [Cybersecurity Professional](https://www.linkedin.com/in/nakia-muhammad-champion/), [YouTuber](https://www.youtube.com/@xtechechnologies)
 
-<div align="center">
-  <img src="./XTech-GitHub.jpg" alt="XTech Technologies LLC Logo" width="300">
-</div>
+![Image](https://github.com/user-attachments/assets/285cf477-123c-40f6-ba47-be506146bb8c)
 
 ## 🔭 I'm currently working on ...
 
