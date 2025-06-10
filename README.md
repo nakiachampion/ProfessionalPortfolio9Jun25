@@ -10,12 +10,14 @@
 
 ---
 
-## 🏆 Featured Case Study: Technology Simplification Through Unified Ecosystem Deployment
+## 🏆 Professional Projects & Case Studies
 
-### Executive Summary
+### Project 1: Technology Simplification Through Unified Ecosystem Deployment
+
+#### Executive Summary
 Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate networking, security, communications, access control, and IoT management for diverse organizations—from small businesses and co-working spaces to home-based entrepreneurs and community-driven projects. By replacing fragmented, multi-vendor systems with a single, integrated ecosystem, clients achieve measurable improvements in cost, security, reliability, and operational efficiency.
 
-### Key Performance Indicators & Quantifiable Outcomes
+#### Key Performance Indicators & Quantifiable Outcomes
 
 | **Metric** | **Baseline** | **Target/Achieved** | **Improvement** |
 |------------|--------------|---------------------|-----------------|
@@ -27,7 +29,7 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 | VoIP Cost Reduction | $200/month | $20/month | **90% Cost Savings** |
 | Return on Investment (ROI) | N/A | 79.15% | **Q4 2024 Achievement** |
 
-### Client Success Stories
+#### Client Success Stories
 
 **SMB Office (Full UniFi Stack)**
 - **IT Workload Reduction:** Centralized management cut IT hours by 50%
@@ -43,21 +45,6 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 - **Cost Savings:** Monthly VoIP costs reduced from $200 to $20
 - **Easy Setup:** Installation and configuration completed in under a week
 - **Improved Call Management:** Flexible call routing and features tailored to business needs
-
----
-
-## 🔭 I'm currently working on ...
-
-### Business Development
-
-- **Cybersecurity Consulting Services:** Developing security frameworks for SMBs.
-- **Market Research & Analysis:** Competitive analysis of security tools.
-- **Client Relationship Management:** CRM systems for tracking client security posture.
-
-### Data Analysis
-
-- **Security Analytics & Visualization:** Building dashboards with Power BI/Tableau.
-- **Advanced R Analytics & Visualization:** [Technology Simplification Through Unified Ecosystem Deployment v3](https://posit.cloud/content/10468467) - Comprehensive data visualization project showcasing operational impact metrics and ROI analysis using RStudio and ggplot2.
 
 #### Data Visualization Portfolio Showcase
 
@@ -94,6 +81,94 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 </tr>
 </table>
 
+**Interactive Analytics Dashboard:** [Technology Simplification Through Unified Ecosystem Deployment v3](https://posit.cloud/content/10468467) - Comprehensive R-based data visualization project showcasing operational impact metrics and ROI analysis.
+
+---
+
+### Project 2: Google Data Analytics Capstone - Advanced Business Intelligence Implementation
+
+#### Project Overview
+Comprehensive data analytics project demonstrating end-to-end business intelligence implementation using Google Data Analytics Certificate methodology. This capstone project showcases advanced analytical skills including data cleaning, statistical analysis, predictive modeling, and executive-level data visualization and reporting across cybersecurity and technology infrastructure domains.
+
+#### Technical Competencies Demonstrated
+
+**Data Processing & Analysis**
+- **Advanced Data Cleaning:** Implemented comprehensive data validation protocols, outlier detection algorithms, and missing value imputation strategies across multiple datasets
+- **Statistical Analysis:** Applied descriptive and inferential statistics to identify significant business trends, correlation patterns, and performance indicators
+- **Predictive Modeling:** Developed forecasting models using regression analysis and time-series methodologies to support strategic business decision-making
+- **Data Integration:** Successfully merged disparate data sources from network monitoring, financial systems, and operational databases to create unified analytical datasets
+
+**Visualization & Reporting**
+- **Executive Dashboards:** Created interactive dashboards optimized for C-level stakeholder consumption with focus on ROI metrics and operational efficiency
+- **Trend Analysis:** Developed time-series visualizations highlighting key performance indicators including cost reduction trends and security incident patterns
+- **Comparative Analytics:** Implemented side-by-side analysis frameworks for technology platform performance benchmarking and vendor evaluation
+- **Automated Reporting:** Designed scalable reporting systems enabling real-time business intelligence monitoring and alert mechanisms
+
+#### Analytical Tools & Technologies Proficiency
+
+| **Category** | **Tools & Platforms** | **Proficiency Level** | **Project Application** |
+|--------------|----------------------|----------------------|-------------------------|
+| **Spreadsheet Analysis** | Google Sheets, Microsoft Excel | Advanced | Financial modeling, KPI tracking |
+| **Database Management** | SQL, BigQuery | Intermediate-Advanced | Data extraction, performance queries |
+| **Statistical Programming** | R, RStudio, ggplot2 | Advanced | Custom visualizations, statistical analysis |
+| **Data Visualization** | Tableau, Google Data Studio | Intermediate-Advanced | Executive dashboards, trend analysis |
+| **Business Intelligence** | Power BI, Looker | Intermediate | Automated reporting, KPI monitoring |
+
+#### Business Impact & Strategic Insights
+
+**Operational Efficiency Improvements**
+- **Process Optimization:** Identified critical workflow bottlenecks resulting in documented 25% efficiency improvement recommendations across IT support processes
+- **Resource Allocation:** Developed data-driven resource allocation strategies with projected 15% operational cost reduction through technology consolidation
+- **Performance Metrics:** Established comprehensive KPI tracking framework enabling real-time business performance monitoring and predictive maintenance scheduling
+
+**Strategic Decision Support**
+- **Market Analysis:** Conducted comprehensive competitive analysis of unified communications platforms providing strategic positioning insights for technology investment decisions
+- **Risk Assessment:** Implemented predictive analytics framework for proactive identification of network vulnerabilities and security incident prediction
+- **Growth Forecasting:** Developed scalable forecasting models supporting strategic planning initiatives with confidence intervals and scenario modeling
+
+#### Project Methodology & Best Practices
+
+**Data Governance Implementation**
+- **Quality Assurance:** Established comprehensive data validation protocols ensuring 99.9% data accuracy across financial, operational, and security datasets
+- **Documentation Standards:** Created detailed data dictionary, process documentation, and analytical methodology guides for knowledge transfer and audit compliance
+- **Ethical Considerations:** Implemented privacy-compliant analytical practices following GDPR guidelines and industry cybersecurity data handling standards
+
+**Stakeholder Communication**
+- **Executive Presentations:** Delivered data-driven insights to senior leadership using clear, actionable visualizations focused on business impact and investment justification
+- **Technical Documentation:** Provided comprehensive analytical methodology documentation enabling technical teams to replicate and extend analysis frameworks
+- **Training Materials:** Developed user-friendly guides and templates enabling self-service analytics capabilities for operational teams
+
+#### Quantifiable Project Outcomes
+
+**Data Analytics Impact Metrics**
+- **Decision Speed:** Reduced executive decision-making time by 40% through automated dashboard implementation and real-time KPI monitoring
+- **Cost Visibility:** Achieved 100% cost center visibility enabling precise budget allocation and vendor performance evaluation
+- **Predictive Accuracy:** Developed forecasting models with 85% accuracy for technology infrastructure planning and capacity management
+
+**Professional Development Achievements**
+- **Certification Completion:** Successfully completed Google Data Analytics Certificate program with distinction, demonstrating proficiency across the complete analytics lifecycle
+- **Industry Application:** Applied analytics methodologies to real-world cybersecurity consulting scenarios, creating replicable frameworks for client engagements
+- **Technical Integration:** Seamlessly integrated advanced analytics capabilities with existing cybersecurity expertise, creating unique professional value proposition
+
+#### Future Applications & Scalability
+
+This Google Data Analytics capstone project establishes foundational capabilities for applying advanced analytics methodologies to cybersecurity consulting engagements. The developed frameworks support scalable implementation across diverse client environments, from small business technology assessments to enterprise security program evaluation.
+
+**📄 Complete Case Study Documentation:** [Google Data Analytics - Technology Simplification Through Unified Ecosystem Deployment v3.docx](https://github.com/user-attachments/files/20666242/Google.Data.Analytics.-.Technology.Simplification.Through.Unified.Ecosystem.Deployment.v3.docx)
+
+---
+
+## 🔭 I'm currently working on ...
+
+### Business Development
+
+- **Cybersecurity Consulting Services:** Developing security frameworks for SMBs.
+- **Market Research & Analysis:** Competitive analysis of security tools.
+- **Client Relationship Management:** CRM systems for tracking client security posture.
+
+### Data Analysis
+
+- **Security Analytics & Visualization:** Building dashboards with Power BI/Tableau.
 - **Threat Intelligence Analysis:** Analyzing threat actor patterns using MITRE ATT&CK.
 - **Risk Assessment & Compliance Analytics:** Automated reporting for NIST, ISO 27001, SOC 2.
 - **SOC Analytics:** Designing SIEM correlation rules.
@@ -138,6 +213,7 @@ Coming soon...
 ## 🔭 Certifications
 
 - [CompTIA Secure Infrastructure Expert (CSIE+) Verification Link](https://www.certmetrics.com/comptia/public/transcript.aspx?transcript=GX13SVBC1FQ1CYYB)
+- [Google Data Analytics Certificate Verification Link](https://coursera.org/share/999c9d6a65a6719dcc6a8f703265220b)
 
 ## 🤳 Connect with me
 
