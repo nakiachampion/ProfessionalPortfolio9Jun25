@@ -17,6 +17,7 @@
 ### Data Analysis
 
 - **Security Analytics & Visualization:** Building dashboards with Power BI/Tableau.
+- **Advanced R Analytics & Visualization:** [Technology Simplification Through Unified Ecosystem Deployment v3](https://posit.cloud/content/10468467) - Comprehensive data visualization project showcasing operational impact metrics and ROI analysis using RStudio and ggplot2.
 - **Threat Intelligence Analysis:** Analyzing threat actor patterns using MITRE ATT&CK.
 - **Risk Assessment & Compliance Analytics:** Automated reporting for NIST, ISO 27001, SOC 2.
 - **SOC Analytics:** Designing SIEM correlation rules.
