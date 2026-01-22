@@ -2,7 +2,7 @@
 
 <img src="https://github.com/user-attachments/assets/c4dda4d5-4637-4aa6-8784-42b4dc6a0d27" alt="Professional Headshot" width="200" height="200" style="border-radius: 50%; object-fit: cover;"/>
 
-[Cybersecurity Professional](https://www.linkedin.com/in/nakia-muhammad-champion/), [YouTuber](https://www.youtube.com/@xtechechnologies)
+[Digital Diagnostician](https://www.linkedin.com/in/nakia-muhammad-champion/), [YouTuber](https://www.youtube.com/@xtechechnologies)
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/285cf477-123c-40f6-ba47-be506146bb8c" alt="Xceptional Technologies Logo" width="400"/>
