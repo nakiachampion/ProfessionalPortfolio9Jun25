@@ -13,27 +13,23 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'EB Garamond', 'Garamond', serif;
             background-color: #000000;
             color: #FFFFFF;
             line-height: 1.8;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-
         header {
             text-align: center;
             margin-bottom: 50px;
             border-bottom: 2px solid #FFD700;
             padding-bottom: 30px;
         }
-
         h1 {
             color: #FFD700;
             font-size: 2.8rem;
@@ -42,14 +38,12 @@
             letter-spacing: 3px;
             font-weight: 700;
         }
-
         .subtitle {
             color: #CCCCCC;
             font-size: 1.3rem;
             font-weight: 400;
             letter-spacing: 1px;
         }
-
         .highlight-box {
             background-color: #FFD700;
             color: #000000;
@@ -62,12 +56,10 @@
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
             line-height: 1.6;
         }
-
         p {
             margin-bottom: 20px;
             font-size: 1.05rem;
         }
-
         .section-title {
             color: #FFD700;
             font-size: 2rem;
@@ -79,14 +71,12 @@
             border-bottom: 2px solid #FFD700;
             padding-bottom: 15px;
         }
-
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 50px;
         }
-
         .card {
             background-color: #1A1A1A;
             border: 1px solid #333333;
@@ -94,25 +84,21 @@
             padding: 30px;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
         .card:hover {
             transform: translateY(-8px);
             border-color: #FFD700;
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
         }
-
         .card h3 {
             color: #FFD700;
             margin-bottom: 15px;
             font-size: 1.5rem;
             font-weight: 700;
         }
-
         .card p {
             color: #E0E0E0;
             font-size: 1rem;
         }
-
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
@@ -122,14 +108,12 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-
         .comparison-table th, .comparison-table td {
             padding: 18px 15px;
             text-align: left;
             border-bottom: 1px solid #333333;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-
         .comparison-table th {
             background-color: #FFD700;
             color: #000000;
@@ -137,119 +121,29 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .comparison-table tbody tr:hover {
             background-color: #262626;
         }
-
-        .comparison-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .check {
-            color: #FFD700;
-            font-weight: 700;
-        }
-
-        .cross {
-            color: #888888;
-        }
-
+        .check { color: #FFD700; font-weight: 700; }
+        .cross { color: #888888; }
+        
         .pane-feature {
             background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
             border-left: 6px solid #FFD700;
             padding: 30px;
             margin: 40px 0;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
         }
-
-        .pane-feature h3 {
-            color: #FFD700;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .pane-feature p {
-            color: #E0E0E0;
-            font-size: 1.05rem;
-        }
-
-        .integration-focus {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .integration-item {
-            flex: 1;
-            min-width: 280px;
-            background-color: #111111;
-            padding: 25px;
-            border-radius: 8px;
-            border: 2px dashed #FFD700;
-        }
-
-        .integration-item strong {
-            color: #FFD700;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .integration-item p {
-            color: #D0D0D0;
-            font-size: 1rem;
-        }
-
         .footer {
             text-align: center;
             margin-top: 70px;
             padding-top: 30px;
             border-top: 1px solid #333333;
             color: #888888;
-            font-size: 0.95rem;
         }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #000000;
-            padding: 15px 40px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 30px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            background-color: #E6C200;
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .comparison-table {
-                font-size: 0.8rem;
-            }
-            .comparison-table th, .comparison-table td {
-                padding: 12px 8px;
-            }
-            .highlight-box {
-                font-size: 1.2rem;
-                padding: 25px;
-            }
+        @media (max-width: 1024px) {
+            .comparison-table { font-size: 0.75rem; }
+            .comparison-table th, .comparison-table td { padding: 10px 5px; }
         }
     </style>
 </head>
@@ -264,9 +158,7 @@
             Why Unified Management Wins: One Interface. Zero Subscriptions. Infinite Control.
         </div>
 
-        <h2 class="section-title">🛡️ Single Pane of Glass Comparison</h2>
-        <p>UniFi isn't just hardware; it's a unified OS that manages your entire business infrastructure from a single dashboard. Traditional IT requires switching between 4-5 different web portals to manage WiFi, Security, and Phones.</p>
-        
+        <h2 class="section-title">🛡️ Top 5 Major Competitors Comparison</h2>
         <table class="comparison-table">
             <thead>
                 <tr>
@@ -276,16 +168,18 @@
                     <th>Aruba Central</th>
                     <th>Fortinet</th>
                     <th>TP-Link Omada</th>
+                    <th>Ruckus One</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Unified OS (Network/CCTV/Access)</td>
+                    <td>Unified OS (Net/CCTV/Access)</td>
                     <td class="check">✓ Integrated</td>
                     <td class="cross">Separate Apps</td>
                     <td class="cross">Partial</td>
                     <td class="cross">Complex Fabric</td>
                     <td class="cross">Network Only</td>
+                    <td class="cross">Partial</td>
                 </tr>
                 <tr>
                     <td>Cloud Access Cost</td>
@@ -294,6 +188,7 @@
                     <td class="cross">$600+/Year</td>
                     <td class="cross">Varies</td>
                     <td class="cross">$10/Device</td>
+                    <td class="cross">$600+/Year</td>
                 </tr>
                 <tr>
                     <td>No-License Functionality</td>
@@ -302,6 +197,7 @@
                     <td class="check">Partial</td>
                     <td class="check">Partial</td>
                     <td class="check">Basic</td>
+                    <td class="check">Partial</td>
                 </tr>
                 <tr>
                     <td>Mobile App Integration</td>
@@ -310,14 +206,16 @@
                     <td class="check">Fair</td>
                     <td class="cross">Limited</td>
                     <td class="check">Good</td>
+                    <td class="check">Good</td>
                 </tr>
                 <tr>
-                    <td>Management Time per Site</td>
+                    <td>Management Time</td>
                     <td class="check">✓ Single Interface</td>
                     <td class="cross">Multiple Tools</td>
                     <td class="cross">Multiple Tools</td>
                     <td class="cross">Complex Setup</td>
-                    <td class="cross">Limited Integration</td>
+                    <td class="cross">Limited</td>
+                    <td class="cross">Multiple Tools</td>
                 </tr>
             </tbody>
         </table>
@@ -326,49 +224,29 @@
         <div class="dashboard-grid">
             <div class="card">
                 <h3>UniFi Network</h3>
-                <p>Enterprise-grade switching and WiFi with visual topology maps and real-time client tracking, all managed through a single interface.</p>
+                <p>Enterprise-grade switching and WiFi with visual topology maps managed through a single interface.</p>
             </div>
             <div class="card">
                 <h3>UniFi Protect</h3>
-                <p>AI-powered video surveillance integrated directly into the network dashboard. No separate NVR costs or additional management tools required.</p>
+                <p>AI-powered video surveillance integrated directly. No separate NVR costs or management tools.</p>
             </div>
             <div class="card">
                 <h3>UniFi Access</h3>
-                <p>Modern door access control managed alongside your cameras and WiFi. One set of users and permissions for everything.</p>
+                <p>Modern door access control managed alongside your cameras and WiFi. One set of users for everything.</p>
             </div>
             <div class="card">
                 <h3>UniFi Talk</h3>
-                <p>Plug-and-play VoIP system that shares the same management interface and secure gateway. Unified communications, unified management.</p>
+                <p>Plug-and-play VoIP system that shares the same management interface. Unified communications.</p>
             </div>
         </div>
 
         <div class="pane-feature">
             <h3>The "Single Pane of Glass" Advantage</h3>
-            <p>With UniFi, Xceptional Technologies deploys a single controller that handles it all—network, video, access control, and VoIP. This unified approach reduces management time by up to 60% and eliminates "vendor finger-pointing" when issues arise. Your entire infrastructure is visible, manageable, and monitorable from one intuitive dashboard.</p>
-        </div>
-
-        <h2 class="section-title">🚀 Choosing UniFi for Your Business</h2>
-        <div class="integration-focus">
-            <div class="integration-item">
-                <strong>For SMBs:</strong>
-                <p>Eliminate $2,000+ in annual recurring fees while gaining enterprise features like SD-WAN and AI Detection at no extra charge.</p>
-            </div>
-            <div class="integration-item">
-                <strong>For Retail:</strong>
-                <p>Integrated cameras and door access allow owners to manage their entire shop from a smartphone anywhere in the world.</p>
-            </div>
-            <div class="integration-item">
-                <strong>For Healthcare:</strong>
-                <p>HIPAA-compliant secure VLANs and comprehensive logging are built into the core UniFi OS at no extra charge.</p>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="https://github.com/nakiachampion" class="cta-button">View My Full Portfolio</a>
+            <p>With UniFi, Xceptional Technologies deploys a single controller that handles it all. This unified approach reduces management time by up to 60% and eliminates "vendor finger-pointing". Your entire infrastructure is visible from one intuitive dashboard.</p>
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 Xceptional Technologies, LLC | Detroit, Michigan</p>
+            <p>© 2026 Xceptional Technologies, LLC | Detroit, Michigan</p>
             <p>Full-Stack UniFi Solutions for Modern Entrepreneurs</p>
         </div>
     </div>
