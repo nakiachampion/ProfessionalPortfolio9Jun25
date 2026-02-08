@@ -3,559 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniFi vs Competitors: License-Free Network Solutions | Xceptional Technologies</title>
+    <title>UniFi vs Competitors: The Single Pane of Glass Advantage | Xceptional Technologies</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: ; #000000
-            color: #FFFFFF;            line-height: 1.6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
         }
-        
+
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
-        
+
         header {
-            background: rgba(30, 30, 30, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 30px;
         }
-        
+
         h1 {
-            color: #FFD700;            font-size: 2.5em;
+            color: #FFD700;
+            font-size: 2.5rem;
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        
+
         .subtitle {
-            color: #CCCCCC
-            font-size: 1.2em;
-            margin-bottom: 20px;
+            color: #CCCCCC;
+            font-size: 1.2rem;
+            font-weight: 300;
         }
-        
-        .key-message {
-            background: #FFD700;
-            color: black;
-            padding: 25px;
-            border-radius: 12px;
-            font-size: 1.3em;
-            font-weight: bold;
+
+        .highlight-box {
+            background-color: #FFD700;
+            color: #000000;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
             text-align: center;
-            margin: 30px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
         }
-        
+
+        .section-title {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
-        
+
         .card {
-            background: #333333;
-            padding: 25px;
+            background-color: #1A1A1A;
+            border: 1px solid #333333;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #FFD700;
         }
-        
-        .card h2 {
+
+        .card h3 {
             color: #FFD700;
-            border-bottom: 3px solid #FFD700;            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
         }
-        
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-        }
-        
-        .comparison-table th {
-            background: #FFD700;
-            color: black;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .comparison-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .comparison-table tr:hover {
-            background: #f5f5f5;
-        }
-        
-        .unifi-highlight {
-            background: #e8f5e9 !important;
-            font-weight: bold;
-        }
-        
-        .check-mark {
-            color: #4caf50;
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-        
-        .x-mark {
-            color: #f44336;
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-        
-        .cost-bar {
-            background: #f44336;
-            height: 30px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            color: white;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-        
-        .cost-bar.unifi {
-            background: #4caf50;
-        }
-        
-        .stat-box {
-            background: ;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 10px 0;
-        }
-        
-        .stat-number {
-            font-size: 3em;
-            font-weight: bold;
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        
-        .roi-calculator {
-            background: #fff3e0;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 5px solid #ff9800;
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .feature-list li {
-            padding: 12px;
-            border-left: 4px solid #4caf50;
-            margin: 10px 0;
-            background: #f5f5f5;
-            border-radius: 5px;
-        }
-        
-        .competitor-card {
-            border-left: 5px solid #f44336;
-            margin: 15px 0;
-            padding: 15px;
-            background: #fff3f3;
-        }
-        
-        .business-value {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
             margin: 30px 0;
-        }
-        
-        footer {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            background-color: #1A1A1A;
             border-radius: 12px;
-            margin-top: 30px;
-            text-align: center;
+            overflow: hidden;
         }
-        
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333333;
+        }
+
+        .comparison-table th {
+            background-color: #FFD700;
+            color: #000000;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #262626;
+        }
+
+        .check { color: #FFD700; font-weight: bold; }
+        .cross { color: #666666; }
+
+        .pane-feature {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            border-left: 5px solid #FFD700;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .integration-focus {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .integration-item {
+            flex: 1;
+            min-width: 250px;
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed #FFD700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #333333;
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FFD700;
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #E6C200;
+        }
+
         @media (max-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
+            h1 { font-size: 2rem; }
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table th, .comparison-table td { padding: 10px 5px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚀 UniFi vs Top 5 Competitors Analysis</h1>
-            <div class="subtitle">Why License-Free UniFi Delivers Superior Business Value</div>
-            <p><strong>By Xceptional Technologies</strong> | Nakia Muhammad Champion<br>
-            Digital Infrastructure Consultant | Detroit, MI</p>
+            <h1>UniFi vs. The Competition</h1>
+            <p class="subtitle">The Power of Single Pane of Glass Management & Ecosystem Integration</p>
         </header>
+
+        <div class="highlight-box">
+            Why Unified Management Wins: One Interface. Zero Subscriptions. Infinite Control.
+        </div>
+
+        <h2 class="section-title">🛡️ Single Pane of Glass Comparison</h2>
+        <p>UniFi isn't just hardware; it's a unified OS that manages your entire business infrastructure from a single dashboard.</p>
         
-        <div class="key-message">
-            💰 UniFi's License-Free Model Saves Businesses $6,800+ Over 5 Years vs. Competitors
-        </div>
-
-        <!-- Statistics Grid -->
-        <div class="dashboard-grid">
-            <div class="card">
-                <div class="stat-box">
-                    <span class="stat-number">$0</span>
-                    <span class="stat-label">Annual Licensing Fees - UniFi</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="stat-box">
-                    <span class="stat-number">392%</span>
-                    <span class="stat-label">Higher Cost - Cisco Meraki</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="stat-box">
-                    <span class="stat-number">79.15%</span>
-                    <span class="stat-label">ROI Achieved with UniFi</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Comparison Table -->
-        <div class="card">
-            <h2>📊 Comprehensive Licensing & Cost Comparison</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Platform</th>
-                        <th>Upfront Cost</th>
-                        <th>Annual Licensing</th>
-                        <th>5-Year Total Cost</th>
-                        <th>License Model</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="unifi-highlight">
-                        <td><strong>UniFi (Ubiquiti)</strong></td>
-                        <td>$1,754</td>
-                        <td>$0</td>
-                        <td>$1,754</td>
-                        <td><span class="check-mark">✓</span> License-Free</td>
-                    </tr>
-                    <tr>
-                        <td>Cisco Meraki</td>
-                        <td>$4,486</td>
-                        <td>$828/year</td>
-                        <td>$8,626</td>
-                        <td><span class="x-mark">✗</span> Required</td>
-                    </tr>
-                    <tr>
-                        <td>Juniper Mist</td>
-                        <td>$3,800</td>
-                        <td>$750/year</td>
-                        <td>$7,550</td>
-                        <td><span class="x-mark">✗</span> Required</td>
-                    </tr>
-                    <tr>
-                        <td>Aruba Central</td>
-                        <td>$3,200</td>
-                        <td>$600/year</td>
-                        <td>$6,200</td>
-                        <td><span class="x-mark">✗</span> Optional</td>
-                    </tr>
-                    <tr>
-                        <td>TP-Link Omada Cloud</td>
-                        <td>$2,100</td>
-                        <td>$400/year</td>
-                        <td>$4,100</td>
-                        <td><span class="x-mark">✗</span> Cloud Only</td>
-                    </tr>
-                    <tr>
-                        <td>Fortinet FortiGate</td>
-                        <td>$3,500</td>
-                        <td>$700/year</td>
-                        <td>$7,000</td>
-                        <td><span class="x-mark">✗</span> Required</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Cost Visualization -->
-        <div class="card">
-            <h2>📉 5-Year Total Cost of Ownership (Visual)</h2>
-            <p><strong>Based on typical SMB deployment (4x APs, 2x Switches, 1x Gateway)</strong></p>
-            <div style="margin-top: 20px;">
-                <p>UniFi</p>
-                <div class="cost-bar unifi" style="width: 20%;">$1,754</div>
-                
-                <p>TP-Link Omada</p>
-                <div class="cost-bar" style="width: 48%;">$4,100</div>
-                
-                <p>Aruba Central</p>
-                <div class="cost-bar" style="width: 72%;">$6,200</div>
-                
-                <p>Fortinet</p>
-                <div class="cost-bar" style="width: 81%;">$7,000</div>
-                
-                <p>Juniper Mist</p>
-                <div class="cost-bar" style="width: 87%;">$7,550</div>
-                
-                <p>Cisco Meraki</p>
-                <div class="cost-bar" style="width: 100%;">$8,626</div>
-            </div>
-        </div>
-
-        <!-- Feature Comparison -->
-        <div class="dashboard-grid">
-            <div class="card">
-                <h2>✅ UniFi Advantages</h2>
-                <ul class="feature-list">
-                    <li><strong>Zero Annual Licensing:</strong> No recurring subscription fees</li>
-                    <li><strong>Free Cloud Management:</strong> Native cloud access at no cost</li>
-                    <li><strong>Complete Ecosystem:</strong> Network, Security, Access, VoIP unified</li>
-                    <li><strong>Lifetime Functionality:</strong> Hardware never stops working</li>
-                    <li><strong>Software Updates:</strong> Free firmware and feature updates</li>
-                    <li><strong>Scalable:</strong> Add unlimited sites without additional fees</li>
-                    <li><strong>MSP-Friendly:</strong> Manage multiple clients cost-effectively</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h2>⚠️ Competitor Limitations</h2>
-                <div class="competitor-card">
-                    <h3>Cisco Meraki</h3>
-                    <p><strong>Cost:</strong> $828/year per site</p>
-                    <p><strong>Issue:</strong> Hardware becomes non-functional without active license. Management features locked behind expensive tiers.</p>
-                </div>
-                <div class="competitor-card">
-                    <h3>Juniper Mist</h3>
-                    <p><strong>Cost:</strong> $750/year per site</p>
-                    <p><strong>Issue:</strong> AI features require premium subscriptions. High entry cost for SMBs.</p>
-                </div>
-                <div class="competitor-card">
-                    <h3>TP-Link Omada</h3>
-                    <p><strong>Cost:</strong> $10/device/year cloud</p>
-                    <p><strong>Issue:</strong> Free controller lacks cloud features. Limited ecosystem compared to UniFi.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ROI Calculator -->
-        <div class="card roi-calculator">
-            <h2>💵 ROI Calculator: UniFi vs Cisco Meraki</h2>
-            <p><strong>Scenario:</strong> Small business with 4 access points, 2 switches, 1 gateway</p>
-            <table class="comparison-table" style="margin-top: 15px;">
+        <table class="comparison-table">
+            <thead>
                 <tr>
-                    <th>Cost Component</th>
-                    <th>UniFi</th>
+                    <th>Management Feature</th>
+                    <th>UniFi (Ubiquiti)</th>
                     <th>Cisco Meraki</th>
-                    <th>Savings</th>
+                    <th>Aruba Central</th>
+                    <th>Fortinet</th>
+                    <th>TP-Link Omada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Unified OS (Network/CCTV/Access)</td>
+                    <td class="check">✓ Integrated</td>
+                    <td class="cross">Separate Apps</td>
+                    <td class="cross">Partial</td>
+                    <td class="cross">Complex Fabric</td>
+                    <td class="cross">Network Only</td>
                 </tr>
                 <tr>
-                    <td>Year 1 Hardware</td>
-                    <td>$1,754</td>
-                    <td>$4,486</td>
-                    <td>$2,732</td>
+                    <td>Cloud Access Cost</td>
+                    <td class="check">$0 (Included)</td>
+                    <td class="cross">$800+/Year</td>
+                    <td class="cross">$600+/Year</td>
+                    <td class="cross">Varies</td>
+                    <td class="cross">$10/Device</td>
                 </tr>
                 <tr>
-                    <td>Year 1 Licensing</td>
-                    <td>$0</td>
-                    <td>$828</td>
-                    <td>$828</td>
+                    <td>No-License Functionality</td>
+                    <td class="check">✓ Full Support</td>
+                    <td class="cross">✗ Bricks Hardware</td>
+                    <td class="check">Partial</td>
+                    <td class="check">Partial</td>
+                    <td class="check">Basic</td>
                 </tr>
                 <tr>
-                    <td>Years 2-5 Licensing</td>
-                    <td>$0</td>
-                    <td>$3,312</td>
-                    <td>$3,312</td>
+                    <td>Mobile App Integration</td>
+                    <td class="check">✓ Superior</td>
+                    <td class="check">Good</td>
+                    <td class="check">Fair</td>
+                    <td class="cross">Limited</td>
+                    <td class="check">Good</td>
                 </tr>
-                <tr class="unifi-highlight">
-                    <td><strong>5-Year Total</strong></td>
-                    <td><strong>$1,754</strong></td>
-                    <td><strong>$8,626</strong></td>
-                    <td><strong>$6,872 (79% savings)</strong></td>
-                </tr>
-            </table>
-            <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px;">
-                <p><strong>🚀 Business Impact:</strong></p>
-                <p>The $6,872 saved over 5 years can fund:</p>
-                <ul>
-                    <li>Additional security cameras or access control systems</li>
-                    <li>Network expansion to additional sites</li>
-                    <li>Upgraded WiFi 7 access points</li>
-                    <li>Professional IT training and certifications</li>
-                </ul>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">🔗 Deep Ecosystem Integration</h2>
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>UniFi Network</h3>
+                <p>Enterprise-grade switching and WiFi with visual topology maps and real-time client tracking.</p>
+            </div>
+            <div class="card">
+                <h3>UniFi Protect</h3>
+                <p>AI-powered video surveillance integrated directly into the network dashboard. No separate NVR costs.</p>
+            </div>
+            <div class="card">
+                <h3>UniFi Access</h3>
+                <p>Modern door access control managed alongside your cameras and WiFi. One set of users for everything.</p>
+            </div>
+            <div class="card">
+                <h3>UniFi Talk</h3>
+                <p>Plug-and-play VoIP system that shares the same management interface and secure gateway.</p>
             </div>
         </div>
 
-        <!-- Business Value Section -->
-        <div class="business-value">
-            <h2 style="color: white; border-bottom: 3px solid white;">🎯 Why Xceptional Technologies Recommends UniFi</h2>
-            <div class="dashboard-grid" style="margin-top: 20px;">
-                <div>
-                    <h3>For Small Businesses</h3>
-                    <ul>
-                        <li>Predictable one-time costs eliminate budget surprises</li>
-                        <li>Enterprise features without enterprise licensing</li>
-                        <li>Easy to manage without dedicated IT staff</li>
-                        <li>Scales affordably as your business grows</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>For IT Consultants & MSPs</h3>
-                    <ul>
-                        <li>Manage unlimited clients without per-device fees</li>
-                        <li>Higher profit margins on deployments</li>
-                        <li>No licensing renewal management overhead</li>
-                        <li>Faster deployment times</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>For Growing Organizations</h3>
-                    <ul>
-                        <li>Add new sites without additional subscription costs</li>
-                        <li>Unified management across all locations</li>
-                        <li>Future-proof investment that keeps working</li>
-                        <li>No vendor lock-in through licensing</li>
-                    </ul>
-                </div>
+        <div class="pane-feature">
+            <h3>The "Single Pane of Glass" Advantage</h3>
+            <p>Traditional IT requires switching between 4-5 different web portals to manage WiFi, Security, and Phones. With UniFi, Xceptional Technologies deploys a single controller that handles it all. This reduces management time by up to 60% and eliminates "vendor finger-pointing" when issues arise.</p>
+        </div>
+
+        <h2 class="section-title">🚀 Choosing UniFi for Your Business</h2>
+        <div class="integration-focus">
+            <div class="integration-item">
+                <strong>For SMBs:</strong> Eliminate $2,000+ in annual recurring fees while gaining enterprise features like SD-WAN and AI Detection.
+            </div>
+            <div class="integration-item">
+                <strong>For Retail:</strong> Integrated cameras and door access allow owners to manage their shop from a smartphone anywhere in the world.
+            </div>
+            <div class="integration-item">
+                <strong>For Healthcare:</strong> HIPAA-compliant secure VLANs and logging are built into the core UniFi OS at no extra charge.
             </div>
         </div>
 
-        <!-- Deployment Success Stories -->
-        <div class="card">
-            <h2>🏛️ Real-World Deployments: Xceptional Technologies</h2>
-            <div class="dashboard-grid">
-                <div>
-                    <h3 style="color: #F2E782;">Happiness Adult Daycare, LLC</h3>
-                    <p><strong>Deployment:</strong> 6x security camera and 1x Gateways</p>
-                    <p><strong>Annual Savings:</strong> $2,000+ vs. Guardian Alarm</p>
-                    <p><strong>Result:</strong> 400+ users supported with 99.9% uptime</p>
-                </div>
-                </div>
-                    <h3 style="color: #F2E782;">SOHO (Residential) - Full Stack</h3>
-                    <p><strong>Deployment:</strong> Network + Protect + Access unified</p>
-                    <p><strong>Time Savings:</strong> 50% reduction in IT support hours</p>
-                    <p><strong>Result:</strong> Single pane of glass management</p>
-                </div>
-            </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://github.com/nakiachampion" class="cta-button">View My Full Portfolio</a>
         </div>
 
-        <!-- Competitive Intelligence -->
-        <div class="card">
-            <h2>🔍 Detailed Competitor Analysis</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>UniFi</th>
-                        <th>Meraki</th>
-                        <th>Juniper Mist</th>
-                        <th>Aruba Central</th>
-                        <th>TP-Link Omada</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="unifi-highlight">
-                        <td><strong>License-Free</strong></td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td>Partial</td>
-                        <td>Partial</td>
-                    </tr>
-                    <tr>
-                        <td>Free Cloud Management</td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                    </tr>
-                    <tr>
-                        <td>Hardware Functions Without License</td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="check-mark">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Integrated Security Cameras</td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                    </tr>
-                    <tr>
-                        <td>Integrated VoIP System</td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                    </tr>
-                    <tr>
-                        <td>Integrated Access Control</td>
-                        <td><span class="check-mark">✓</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                        <td><span class="x-mark">✗</span></td>
-                    </tr>
-                    <tr>
-                        <td>Per-Device Cloud Fees</td>
-                        <td>$0</td>
-                        <td>$100-200/yr</td>
-                        <td>$150/yr</td>
-                        <td>$100-150/yr</td>
-                        <td>$10/yr</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="footer">
+            <p>&copy; 2026 Xceptional Technologies, LLC | Detroit, Michigan</p>
+            <p>Full-Stack UniFi Solutions for Modern Entrepreneurs</p>
         </div>
-
-        <footer>
-            <h2>📧 Get Started with UniFi</h2>
-            <p><strong>Xceptional Technologies</strong> - Your UniFi Deployment Partner</p>
-            <p>Licensed & Certified Network Infrastructure Consultant</p>
-            <p><strong>Nakia Muhammad (Champion)</strong><br>
-            Digital Infrastructure Specialist | Detroit, Michigan<br>
-            CompTIA IT Operations Specialist (CIOS+) | Google Data Analytics Certified</p>
-            <p style="margin-top: 20px;">
-                <strong>Contact:</strong> Xceptional Technologies<br>
-                <strong>Services:</strong> Network Design | UniFi Deployment | IT Consulting | Data Analytics
-            </p>
-            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                <em>Data sourced from manufacturer pricing (February 2026), industry comparisons, and real-world deployments.<br>
-                Based on typical SMB deployment: 4x WiFi 7 APs, 2x PoE switches, 1x gateway/router.</em>
-            </p>
-        </footer>
     </div>
 </body>
 </html>
