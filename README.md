@@ -83,6 +83,10 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 
 **Interactive Analytics Dashboard:** [Technology Simplification Through Unified Ecosystem Deployment v3](https://posit.cloud/content/10468467) - Comprehensive R-based data visualization project showcasing operational impact metrics and ROI analysis.
 
+**Interactive Dashboards:**
+- [UniFi vs Competitors Dashboard](unifi-competitor-dashboard.html) - Comprehensive cost and feature comparison with bar chart analysis showing 5-year TCO advantages against Meraki, Aruba, and Fortinet
+- [UniFi Cost Savings Dashboard](unifi-cost-savings-dashboard.html) - Visual ROI analysis demonstrating annual savings, infrastructure optimization, and management efficiency improvements
+
 ---
 
 ### Project 2: Google Data Analytics Capstone - Advanced Business Intelligence Implementation
