@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniFi vs Competitors Cost Analysis</title>
+    <title>UniFi vs Competitors: Cost Savings & Ecosystem Integration</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1E1E1E;
+            --bg-color: #000000;
+            --card-bg: #1A1A1A;
             --gold: #D4AF37;
-            --grey: #A0A0A0;
+            --grey: #CCCCCC;
             --white: #FFFFFF;
             --border: #333333;
         }
         body {
             background-color: var(--bg-color);
             color: var(--white);
-            font-family: 'Inter', sans-serif;
+            font-family: 'EB Garamond', serif;
             margin: 0;
             padding: 20px;
+            line-height: 1.6;
         }
         .container {
             max-width: 1200px;
@@ -32,12 +33,12 @@
             border-bottom: 2px solid var(--gold);
             padding-bottom: 20px;
         }
-        h1 { color: var(--gold); margin: 0; font-size: 2.5em; }
-        .subtitle { color: var(--grey); font-size: 1.1em; margin-top: 10px; }
+        h1 { color: var(--gold); margin: 0; font-size: 2.8em; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { color: var(--grey); font-size: 1.3em; margin-top: 10px; }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -50,13 +51,14 @@
             transition: transform 0.3s ease;
         }
         .stat-card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .stat-value { font-size: 2em; font-weight: 700; color: var(--gold); margin: 10px 0; }
-        .stat-label { color: var(--grey); text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px; }
+        .stat-value { font-size: 2.2em; font-weight: 700; color: var(--gold); margin: 10px 0; }
+        .stat-label { color: var(--grey); text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; }
 
         .content-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 3fr 2fr;
             gap: 30px;
+            margin-bottom: 40px;
         }
         @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
 
@@ -67,130 +69,157 @@
             border: 1px solid var(--border);
         }
         
+        .integration-section {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px dashed var(--gold);
+        }
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 30px 0;
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
         }
         .comparison-table th, .comparison-table td {
-            padding: 15px;
+            padding: 18px;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
-        .comparison-table th { background: #252525; color: var(--gold); }
-        .highlight-row { background: rgba(212, 175, 55, 0.05); }
+        .comparison-table th { background: #252525; color: var(--gold); text-transform: uppercase; }
+        .highlight-row { background: rgba(212, 175, 55, 0.08); }
         
-        .feature-item { margin-bottom: 15px; padding-left: 25px; position: relative; }
-        .feature-item::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+        .product-badge {
+            background: var(--gold);
+            color: black;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
 
         .footer {
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
             color: var(--grey);
-            font-size: 0.9em;
-            padding: 20px;
+            font-size: 1em;
+            padding: 30px;
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>UniFi vs. The Competition</h1>
-            <p class="subtitle">Single Pane of Glass Management & Strategic Cost Integration</p>
+            <h1>UniFi Strategic Cost Analysis</h1>
+            <p class="subtitle">Unified Integration & Total Cost of Ownership Optimization</p>
         </header>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">UniFi 5-Year TCO</div>
                 <div class="stat-value">$1,949</div>
-                <div class="stat-label">No Subscriptions</div>
+                <div class="stat-label">0% Recurring Fees</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Meraki 5-Year TCO</div>
                 <div class="stat-value">$10,031</div>
-                <div class="stat-label">Mandatory Licensing</div>
+                <div class="stat-label">Mandatory Subscriptions</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Potential Savings</div>
-                <div class="stat-value">75-80%</div>
-                <div class="stat-label">Long-Term Value</div>
+                <div class="stat-label">Competitor Avg</div>
+                <div class="stat-value">$8,450</div>
+                <div class="stat-label">Licensing Dependency</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Management Pane</div>
-                <div class="stat-value">1 (Unified)</div>
-                <div class="stat-label">Network/Security/Access</div>
+                <div class="stat-label">Unified Pane</div>
+                <div class="stat-value">1 Portal</div>
+                <div class="stat-label">Net/Sec/Access/VoIP</div>
             </div>
         </div>
 
         <div class="content-grid">
             <div class="chart-container">
-                <h3 style="color: var(--gold); margin-top: 0;">5-Year Cumulative Cost Projection</h3>
+                <h3 style="color: var(--gold); margin-top: 0;">Long-Term Cost Projection (5 Years)</h3>
                 <canvas id="costChart"></canvas>
             </div>
 
-            <div class="chart-container">
-                <h3 style="color: var(--gold); margin-top: 0;">Why Single Pane Matters</h3>
-                <div class="feature-item"><b>UniFi OS Integration:</b> Manage Network, Protect (CCTV), Access (Doors), and Talk (VoIP) in one place.</div>
-                <div class="feature-item"><b>No License Gates:</b> Features are unlocked by hardware ownership, not monthly fees.</div>
-                <div class="feature-item"><b>Remote Access:</b> Free cloud management via unifi.ui.com without VPN complexity.</div>
-                <div class="feature-item"><b>Scalability:</b> Add devices effortlessly without updating contract tiers.</div>
+            <div class="integration-section">
+                <h3 style="color: var(--gold); margin-top: 0;">UniFi Product Integration</h3>
+                <p>UniFi products are designed to work as a single organism through <b>UniFi OS</b>.</p>
+                <div style="margin-top: 20px;">
+                    <p><span class="product-badge">Gateways</span> <b>Dream Machine Special Edition:</b> The heart of the network, combining routing, PoE switching, and NVR.</p>
+                    <p><span class="product-badge">Switching</span> <b>Etherlighting™ Switches:</b> High-capacity backbones with visual port identification.</p>
+                    <p><span class="product-badge">Wireless</span> <b>WiFi 7 Pro:</b> Massive throughput without per-AP management fees.</p>
+                    <p><span class="product-badge">Security</span> <b>UniFi Protect:</b> AI-driven cameras that store data locally, ensuring privacy and $0 cloud storage costs.</p>
+                </div>
             </div>
         </div>
 
+        <h2 style="color: var(--gold); text-align: center;">Top 5 Enterprise Competitors Comparison</h2>
         <table class="comparison-table">
             <thead>
                 <tr>
-                    <th>Brand</th>
-                    <th>Upfront Cost</th>
-                    <th>Annual Licenses</th>
-                    <th>Single Dashboard</th>
-                    <th>Hardware Dependency</th>
+                    <th>Vendor</th>
+                    <th>Management Model</th>
+                    <th>5-Year License Cost</th>
+                    <th>Single Pane Coverage</th>
+                    <th>Hardware Value</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="highlight-row">
                     <td style="color: var(--gold); font-weight: bold;">Ubiquiti UniFi</td>
-                    <td>Moderate</td>
+                    <td>Unified OS (On-site/Cloud)</td>
                     <td>$0</td>
-                    <td>Full (UniFi OS)</td>
-                    <td>Lifetime Functional</td>
+                    <td>Full (Net/CCTV/Door/Talk)</td>
+                    <td>High (Lifetime Use)</td>
                 </tr>
                 <tr>
                     <td>Cisco Meraki</td>
-                    <td>High</td>
-                    <td>$135 - $800+</td>
-                    <td>Full (Cloud)</td>
-                    <td>Bricks without License</td>
+                    <td>Pure Cloud Subscription</td>
+                    <td>$4,000 - $8,000+</td>
+                    <td>Full (Licensing Req.)</td>
+                    <td>Zero (Bricks if Expired)</td>
                 </tr>
                 <tr>
                     <td>Aruba Central</td>
-                    <td>High</td>
-                    <td>$80 - $200+</td>
-                    <td>Subscription Only</td>
-                    <td>Limited Offline</td>
+                    <td>SaaS Subscription</td>
+                    <td>$3,000 - $5,500+</td>
+                    <td>Partial (Networking Focus)</td>
+                    <td>Medium (Restricted Features)</td>
+                </tr>
+                <tr>
+                    <td>Ruckus One</td>
+                    <td>Subscription Based</td>
+                    <td>$3,500 - $6,000+</td>
+                    <td>WiFi/Switching Only</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Juniper Mist</td>
+                    <td>AI-Cloud Subscription</td>
+                    <td>$4,500 - $7,500+</td>
+                    <td>High (AI Focus)</td>
+                    <td>Low (High Recurring)</td>
                 </tr>
                 <tr>
                     <td>TP-Link Omada</td>
-                    <td>Low</td>
-                    <td>$0 (Opt. Cloud Fee)</td>
+                    <td>Controller Based</td>
+                    <td>$0 - $500 (Opt. Cloud)</td>
                     <td>Network Only</td>
-                    <td>Limited Integration</td>
-                </tr>
-                <tr>
-                    <td>Cisco (Catalyst)</td>
-                    <td>Very High</td>
-                    <td>DNA Subscriptions</td>
-                    <td>Fragmented</td>
-                    <td>Complex CLI focus</td>
+                    <td>High (Value Focus)</td>
                 </tr>
             </tbody>
         </table>
 
         <div class="footer">
-            Dashboard created for nakiachampion Portfolio | Data based on 2024-2025 SMB Networking Benchmarks
+            <p>© 2026 Xceptional Technologies, LLC | Detroit, Michigan</p>
+            <p>Empowering Detroit's Digital Infrastructure through Unified Solutions.</p>
         </div>
     </div>
 
@@ -199,25 +228,26 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                labels: ['Start', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
                 datasets: [{
                     label: 'UniFi',
                     data: [1754, 1754, 1754, 1949, 1949, 1949],
                     borderColor: '#D4AF37',
                     backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                    borderWidth: 3,
-                    fill: true
+                    borderWidth: 4,
+                    fill: true,
+                    tension: 0.3
                 }, {
                     label: 'Meraki',
                     data: [4486, 5314, 6142, 6970, 7798, 8626],
-                    borderColor: '#A0A0A0',
+                    borderColor: '#FFFFFF',
                     borderDash: [5, 5],
                     borderWidth: 2,
                     fill: false
                 }, {
-                    label: 'Enterprise Alternative',
-                    data: [3200, 4600, 6000, 7400, 8800, 10200],
-                    borderColor: '#444',
+                    label: 'Industry Average',
+                    data: [3200, 4250, 5300, 6350, 7400, 8450],
+                    borderColor: '#666',
                     borderWidth: 1,
                     fill: false
                 }]
@@ -227,16 +257,16 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: { color: '#333' },
-                        ticks: { color: '#A0A0A0', callback: value => '$' + value }
+                        grid: { color: '#222' },
+                        ticks: { color: '#CCC', callback: value => '$' + value }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#A0A0A0' }
+                        ticks: { color: '#CCC' }
                     }
                 },
                 plugins: {
-                    legend: { labels: { color: '#FFFFFF' } }
+                    legend: { labels: { color: '#FFFFFF', font: { family: 'EB Garamond' } } }
                 }
             }
         });
