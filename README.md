@@ -85,7 +85,7 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 
 **Interactive Dashboards:**
 - [UniFi vs Competitors Dashboard](https://nakiachampion.github.io/ProfessionalPortfolio9Jun25/unifi-cost-savings-dashboard.html) - Comprehensive cost and feature comparison with bar chart analysis showing 5-year TCO advantages against Meraki, Aruba, and Fortinet
-- [UniFi Cost Savings Dashboard](https://nakiachampion.github.io/ProfessionalPortfolio9Jun25/unifi-competitor-dashboard.html) - Visual ROI analysis demonstrating annual savings, infrastructure optimization, and management efficiency improvements
+- [UniFi Cost Savings Dashboard](https://nakiachampion.github.io/ProfessionalPortfolio9Jun25/unifi-cost-savings-dashboard-enhanced.html) - Visual ROI analysis demonstrating annual savings, infrastructure optimization, and management efficiency improvements
 
 ---
 
