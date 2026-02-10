@@ -87,6 +87,7 @@ Xceptional Technologies leverages the Ubiquiti UniFi platform to consolidate net
 - [UniFi vs Competitors Dashboard](https://nakiachampion.github.io/ProfessionalPortfolio9Jun25/unifi-competitive-analysis.html) - Comprehensive cost and feature comparison showcasing 5-year TCO advantages against Meraki, Aruba, and Fortinet ROI analysis demonstrating annual savings, infrastructure optimization, and management efficiency improvements
 
 ---
+- [UniFi Residential Solutions](https://nakiachampion.github.io/ProfessionalPortfolio9Jun25/unifi-residential-security-dashboard.html) - Three-tier residential security packages (Essential/Complete/Estate) with real-time UniFi Store pricing, per-home cost breakdowns vs Ring/Vivint/Xfinity/AT&T/ADT, and 5-year TCO analysis demonstrating $400-$5,000+ savings per property with zero monthly fees
 
 ### Project 2: Google Data Analytics Capstone - Advanced Business Intelligence Implementation
 
