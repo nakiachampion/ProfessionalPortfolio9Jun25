@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xceptional Technologies - Detroit-based MSP specializing in Ubiquiti UniFi solutions for small businesses and entrepreneurs">
+    <title>Xceptional Technologies | Detroit MSP & UniFi Solutions</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Xceptional Technologies - UniFi Solutions Detroit">
+    <meta property="og:description" content="Enterprise-grade network solutions, managed IT services, and digital literacy programs for Detroit SMBs">
+    <meta property="og:image" content="assets/images/og-home.png">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="assets/images/xtech-logo.png" alt="Xceptional Technologies Logo" class="logo">
+                <h1 class="brand-name">Xceptional Technologies</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="plan.html" class="nav-link">Business Plan</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Empowering Detroit's Small Businesses</h2>
+                    <p class="hero-subtitle">Enterprise-Grade UniFi Solutions | Managed IT Services | Digital Literacy</p>
+                    <p class="hero-description">Full-stack Ubiquiti UniFi ecosystem including networking, EV charging, VoIP, access control, and smart IoT solutions tailored for Detroit SMBs and entrepreneurs.</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn-primary">Get Started</a>
+                        <a href="services.html" class="btn btn-secondary">View Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="mission-vision">
+            <div class="container">
+                <div class="section-grid">
+                    <div class="card">
+                        <h3>Our Mission</h3>
+                        <p>To empower Detroit communities through accessible technology, fostering digital literacy and providing pathways to economic opportunity.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Our Vision</h3>
+                        <p>To be the leading provider of Ubiquiti solutions in Detroit, renowned for community impact and commitment to closing the digital divide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Services -->
+        <section class="services-overview">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Managed IT Services</h3>
+                        <p>24/7 network monitoring, support, and management for Detroit SMBs</p>
+                        <a href="services.html#managed-it" class="service-link">Learn More →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>UniFi EV Charging</h3>
+                        <p>Smart EV charger deployment and management for businesses</p>
+                        <a href="services.html#ev-charging" class="service-link">Learn More →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📞</div>
+                        <h3>UniFi Talk VoIP</h3>
+                        <p>Enterprise phone systems with unlimited internal calling</p>
+                        <a href="services.html#voip" class="service-link">Learn More →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎓</div>
+                        <h3>Training Programs</h3>
+                        <p>Ubiquiti certifications and IT skills development</p>
+                        <a href="services.html#training" class="service-link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live UniFi Products -->
+        <section class="unifi-products">
+            <div class="container">
+                <h2 class="section-title">Live UniFi Product Catalog</h2>
+                <p class="section-description">Browse the latest Ubiquiti products we deploy and support. Updated automatically twice daily.</p>
+                
+                <!-- Product Filters -->
+                <div id="product-filters" class="product-filters">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="networking">Networking</button>
+                    <button class="filter-btn" data-category="protect">Protect</button>
+                    <button class="filter-btn" data-category="access">Access</button>
+                    <button class="filter-btn" data-category="talk">Talk</button>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-list" class="product-grid">
+                    <div class="loading">Loading latest products...</div>
+                </div>
+
+                <p id="last-updated" class="last-updated"></p>
+            </div>
+        </section>
+
+        <!-- Key Metrics -->
+        <section class="metrics">
+            <div class="container">
+                <h2 class="section-title">Our Goals</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-number">150</div>
+                        <div class="metric-label">Individuals Trained</div>
+                        <div class="metric-period">Year 1 Goal</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">20</div>
+                        <div class="metric-label">SMBs Served</div>
+                        <div class="metric-period">Year 1 Goal</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">50</div>
+                        <div class="metric-label">EV Chargers Deployed</div>
+                        <div class="metric-period">Via Partnerships</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number">30</div>
+                        <div class="metric-label">IT Job Placements</div>
+                        <div class="metric-period">Year 1 Goal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Impact -->
+        <section class="community-impact">
+            <div class="container">
+                <h2 class="section-title">Bridging Detroit's Digital Divide</h2>
+                <p class="section-description">Xceptional Technologies combines enterprise technology with community empowerment through:</p>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <h4>Affordable Solutions</h4>
+                        <p>Enterprise-grade technology at SMB-friendly pricing</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>Skills Training</h4>
+                        <p>Ubiquiti certification programs creating career pathways</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>Community Partnerships</h4>
+                        <p>Collaborations with Genesis Hope CDC and local organizations</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>Local Job Creation</h4>
+                        <p>Building Detroit's technology workforce</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p>Let's discuss how Xceptional Technologies can help your business thrive with enterprise-grade UniFi solutions.</p>
+                    <a href="contact.html" class="btn btn-large">Schedule a Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Xceptional Technologies, LLC</h4>
+                    <p>Detroit-based MSP specializing in Ubiquiti UniFi solutions</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#managed-it">Managed IT</a></li>
+                        <li><a href="services.html#ev-charging">EV Charging</a></li>
+                        <li><a href="services.html#training">Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plan.html">Business Plan</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="mailto:info@xceptionaltechnologies.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Xceptional Technologies, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="assets/js/unifi-client.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
