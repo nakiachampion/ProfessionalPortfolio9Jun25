@@ -3,810 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xceptional Technologies: Residential UniFi Security Dashboard - A Comprehensive Comparison</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <title>XTech | HomeConnect Residential Security</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Fonts: EB Garamond -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#050505',    
+                            dark: '#111111',     
+                            surface: '#1E1E1E',  
+                            border: '#333333',   
+                            red: '#D32F2F',      
+                            gold: '#D4AF37',     
+                            text: '#F3F4F6',     
+                            muted: '#9CA3AF'     
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"EB Garamond"', 'Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-:root {
- --bg-color: #000000;
- --card-bg: #1A1A1A;
- --gold: #D4AF37;
- --gold-bright: #FFD700;
- --grey: #CCCCCC;
- --white: #FFFFFF;
- --border: #333333;
- }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body { background-color: #111111; color: #F3F4F6; -webkit-font-smoothing: antialiased; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 350px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D32F2F; }
+        .bg-grid { background-image: linear-gradient(to right, #1E1E1E 1px, transparent 1px), linear-gradient(to bottom, #1E1E1E 1px, transparent 1px); background-size: 40px 40px; }
+        
+        /* Simulated Camera Feed Effect */
+        .cam-feed { position: relative; overflow: hidden; background: #0a0a0a; border: 1px solid #333; }
+        .cam-feed::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+            pointer-events: none;
         }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--white);
-            font-family: 'EB Garamond', serif;
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 3px solid var(--gold);
-            padding-bottom: 30px;
-        }
-
-        h1 {
-            color: var(--gold);
-            font-size: 2.8em;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: var(--grey);
-            font-size: 1.4em;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
-            color: #000000;
-            padding: 35px;
-            border-radius: 12px;
-            margin: 40px 0;
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 700;
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
-            line-height: 1.6;
-        }
-
-        .section-title {
-            color: var(--gold-bright);
-            font-size: 2.2rem;
-            margin: 60px 0 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 15px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .stat-value {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--gold-bright);
-            margin: 15px 0;
-        }
-
-        .stat-label {
-            color: var(--grey);
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 1px;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold-bright);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
-        }
-
-        .card h3 {
-            color: var(--gold-bright);
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .card p {
-            color: #E0E0E0;
-            font-size: 1.05rem;
-        }
-
-        .card ul {
-            margin: 15px 0;
-            padding-left: 25px;
-            color: #E0E0E0;
-        }
-
-        .card li {
-            margin: 10px 0;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 35px 0;
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 18px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .comparison-table th {
-            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
-            color: #000000;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-        }
-
-        .comparison-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.08);
-        }
-
-        .highlight-row {
-            background: rgba(212, 175, 55, 0.1);
-            font-weight: 600;
-        }
-
-        .check {
-            color: var(--gold-bright);
-            font-weight: 700;
-        }
-
-        .cross {
-            color: #888888;
-        }
-
-        .pane-feature {
-            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
-            border-left: 6px solid var(--gold-bright);
-            padding: 35px;
-            margin: 40px 0;
-            border-radius: 8px;
-        }
-
-        .pane-feature h3 {
-            color: var(--gold-bright);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .pane-feature p {
-            font-size: 1.1rem;
-            color: var(--grey);
-        }
-
-        .pane-feature ul {
-            margin: 15px 0;
-            padding-left: 25px;
-        }
-
-        .pane-feature li {
-            margin: 10px 0;
-        }
-
-        .footer {
-            margin-top: 80px;
-            text-align: center;
-            color: var(--grey);
-            font-size: 1.1em;
-            padding: 40px;
-            border-top: 2px solid var(--border);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .subtitle {
-                font-size: 1.1em;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .comparison-table {
-                font-size: 0.75rem;
-            }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 10px 5px;
-            }
-        }
+        .recording-dot { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Residential Security Comparison Dashboard</h1>
-            <div class="subtitle">A UniFi vs Competitor's Solution to Cost-Effective Home Security</div>
-        </header>
+<body class="bg-brand-dark min-h-screen flex flex-col font-sans">
 
-        <div class="highlight-box">
-            Why UniFi Wins for Multi-Property Homeowners: Zero Monthly Fees. Complete Local Control. Single Pane Management.
-        </div>
-
-        <h2 class="section-title">📊 4-Home Portfolio Analysis</h2>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">UniFi 5-Year Cost (Per Home)</div>
-                <div class="stat-value">$1,000-$1,500</div>
-                <div class="stat-label">One-Time Investment</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Competitor 5-Year Cost</div>
-                <div class="stat-value">$2,000-$3,500</div>
-                <div class="stat-label">+ Monthly Subscriptions</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total 4-Home Savings</div>
-                <div class="stat-value">$4,000-$10,000</div>
-                <div class="stat-label">Over 5 Years with UniFi</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Contract Lock-In</div>
-                <div class="stat-value">0 Months</div>
-                <div class="stat-label">vs 12-60 Mo. Competitors</div>
+    <!-- Navigation -->
+    <nav class="w-full z-50 bg-brand-black/95 border-b border-brand-border sticky top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center h-full py-2 hover:opacity-80 transition-opacity">
+                    <!-- Logo Integration -->
+                    <img src="logo.jpeg" alt="XTech Logo" onerror="this.src='../logo.jpeg'" class="h-12 object-contain mix-blend-lighten">
+                    <span class="ml-3 font-bold text-xl tracking-widest text-brand-text">XTECH <span class="text-brand-gold">HOMECONNECT</span></span>
+                </a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <span class="text-xs border border-green-500 text-green-500 px-2 py-1 rounded tracking-widest uppercase">System Secure</span>
+                    <a href="index.html" class="text-brand-muted hover:text-brand-gold text-sm uppercase tracking-widest font-bold transition-colors">Return to Main</a>
+                </div>
             </div>
         </div>
+    </nav>
 
-                <h2 class="section-title">🏆 UniFi Protection Tiers - Per Residence Breakdown</h2>
+    <!-- Main Content -->
+    <main class="flex-grow relative bg-brand-dark">
+        <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            
+            <header class="mb-12 border-l-4 border-brand-gold pl-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-2">Residential Security Comparison</h1>
+                <p class="text-brand-muted text-lg max-w-3xl">
+                    Evaluating the Xceptional Technologies <strong>HomeConnect</strong> package (UniFi Protect + Smart IoT Automation) against traditional consumer-grade cloud security systems.
+                </p>
+            </header>
 
-        <div class="pane-feature">
-            <h3>Three Tiers of Residential Protection</h3>
-            <p>Choose the right level of security for each property. All tiers include local storage, zero monthly fees, and lifetime hardware functionality.</p>
-        </div>
-
-        <div class="dashboard-grid">
-            <!-- TIER 1: Essential Protection -->
-            <div class="card">
-                <h3 style="color: var(--gold-bright); border-bottom: 2px solid var(--gold); padding-bottom: 10px;">🥉 TIER 1: Essential Protection</h3>
-                <p style="margin: 15px 0; font-weight: 600; font-size: 1.2rem;">Perfect for: Apartments, Condos, Small Homes</p>
+            <!-- Data Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <h4 style="color: var(--gold-bright); margin-bottom: 10px;">Equipment Package:</h4>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cloud-keys-gateways/products/ucg-ultra" target="_blank" style="color: var(--gold-bright);">UniFi Cloud Gateway Ultra</a> - $129</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cameras/products/uvc-g5-bullet" target="_blank" style="color: var(--gold-bright);">UniFi G5 Bullet Camera (2x)</a> - $119 each</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-door-access/products/uvc-g4-doorbell-pro-poe" target="_blank" style="color: var(--gold-bright);">UniFi G4 Doorbell Pro (PoE)</a> - $199</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-switching/products/usw-lite-8-poe" target="_blank" style="color: var(--gold-bright);">UniFi Switch Lite 8 PoE</a> - $109</li>
-                    </ul>
+                <!-- TCO Chart: UniFi vs Ring/Nest -->
+                <div class="bg-brand-surface p-6 rounded border border-brand-border shadow-2xl">
+                    <h2 class="text-xl font-bold text-white mb-1">3-Year TCO Comparison</h2>
+                    <p class="text-sm text-brand-muted mb-6">Simulation: 1 Doorbell, 3 Exterior Cameras, Local Storage vs Cloud Subscriptions</p>
+                    <div class="chart-container">
+                        <canvas id="tcoResidentialChart"></canvas>
+                    </div>
                 </div>
 
-                <div style="margin-top: 20px; padding: 15px; background: var(--card-bg); border: 2px solid var(--gold); border-radius: 8px;">
-                    <div style="font-size: 1.1rem; margin-bottom: 5px;">Total Investment:</div>
-                    <div style="font-size: 2.2rem; font-weight: 700; color: var(--gold-bright);">$675</div>
-                    <div style="font-size: 0.9rem; color: var(--grey); margin-top: 5px;">One-time cost | $0/month forever</div>
-                </div>
-
-                <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 6px;">
-                    <strong>Coverage:</strong> Front door + 2 key areas | 7-day 4K recording | Remote access via UniFi app
+                <!-- Security & Privacy Radar -->
+                <div class="bg-brand-surface p-6 rounded border border-brand-border shadow-2xl">
+                    <h2 class="text-xl font-bold text-white mb-1">Privacy & Capability Metrics</h2>
+                    <p class="text-sm text-brand-muted mb-6">Evaluating Data Sovereignty, Video Quality, and Automation.</p>
+                    <div class="chart-container">
+                        <canvas id="residentialRadarChart"></canvas>
+                    </div>
                 </div>
             </div>
 
-            <!-- TIER 2: Complete Protection -->
-            <div class="card" style="border: 3px solid var(--gold);">
-                <h3 style="color: var(--gold-bright); border-bottom: 2px solid var(--gold); padding-bottom: 10px;">🥈 TIER 2: Complete Protection <span style="font-size: 0.7em; background: var(--gold); color: black; padding: 3px 8px; border-radius: 4px; margin-left: 10px;">POPULAR</span></h3>
-                <p style="margin: 15px 0; font-weight: 600; font-size: 1.2rem;">Perfect for: Single-Family Homes, 3-4 Bedrooms</p>
-                
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <h4 style="color: var(--gold-bright); margin-bottom: 10px;">Equipment Package:</h4>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cloud-keys-gateways/products/udm-se" target="_blank" style="color: var(--gold-bright);">UniFi Dream Machine SE</a> - $499 (includes 128GB storage)</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cameras/products/uvc-g5-bullet" target="_blank" style="color: var(--gold-bright);">UniFi G5 Bullet Camera (4x)</a> - $119 each</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-door-access/products/uvc-g4-doorbell-pro-poe" target="_blank" style="color: var(--gold-bright);">UniFi G4 Doorbell Pro (PoE)</a> - $199</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-switching/products/usw-lite-16-poe" target="_blank" style="color: var(--gold-bright);">UniFi Switch Lite 16 PoE</a> - $199</li>
-                    </ul>
+            <!-- CSIE+ Analytical Breakdown -->
+            <div class="bg-brand-black border border-brand-border p-6 rounded border-l-4 border-brand-red mb-12 shadow-2xl">
+                <h4 class="text-white font-bold mb-2 flex items-center">
+                    <span class="text-brand-red text-xl mr-2">&#9888;</span> Architectural Insight: Data Sovereignty
+                </h4>
+                <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                    Consumer brands like Amazon (Ring) and Google (Nest) rely on cloud-dependent architectures. This introduces latency, continuous subscription fees, and surrenders your private residential footage to third-party servers. 
+                </p>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    <strong>The XTech HomeConnect Solution:</strong> Built on the UniFi Protect ecosystem, footage is stored 100% locally on a solid-state NVR inside your home. There are <strong>zero monthly cloud fees</strong>, instantaneous scrubbing of high-definition video, and automated integrations with platforms like Lutron (Smart Lighting/Shading) that operate entirely without internet dependency.
+                </p>
+            </div>
+
+            <!-- Live Dashboard Preview (Visual Tutorial Component) -->
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-white mb-2">HomeConnect: Live Interface Preview</h2>
+                <p class="text-brand-muted text-sm mb-6">A simulated view of your localized command center, featuring AI-driven Smart IoT automation.</p>
+            </div>
+
+            <div class="bg-brand-surface p-6 border border-brand-border rounded shadow-2xl mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Camera Grid -->
+                    <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- Cam 1 -->
+                        <div class="cam-feed aspect-video rounded flex items-end p-3 relative group border border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-10 transition-opacity">
+                                <span class="text-white text-5xl font-sans tracking-widest opacity-20">FRONT DOOR</span>
+                            </div>
+                            <div class="relative z-10 w-full flex justify-between text-xs font-mono drop-shadow-md">
+                                <span class="text-white bg-black/50 px-2 py-1 rounded">G4 Doorbell Pro</span>
+                                <span class="text-brand-red recording-dot bg-black/50 px-2 py-1 rounded">REC</span>
+                            </div>
+                            <!-- Mock AI Detection -->
+                            <div class="absolute top-2 right-2 border border-brand-gold bg-brand-black/80 text-brand-gold text-[10px] px-2 py-1 font-mono rounded">PACKAGE DETECTED</div>
+                        </div>
+
+                        <!-- Cam 2 -->
+                        <div class="cam-feed aspect-video rounded flex items-end p-3 relative group border border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-10 transition-opacity">
+                                <span class="text-white text-5xl font-sans tracking-widest opacity-20">DRIVEWAY</span>
+                            </div>
+                            <div class="relative z-10 w-full flex justify-between text-xs font-mono drop-shadow-md">
+                                <span class="text-white bg-black/50 px-2 py-1 rounded">AI Bullet</span>
+                                <span class="text-brand-red recording-dot bg-black/50 px-2 py-1 rounded">REC</span>
+                            </div>
+                            <div class="absolute top-2 right-2 border border-green-500 bg-brand-black/80 text-green-500 text-[10px] px-2 py-1 font-mono rounded">VEHICLE DETECTED</div>
+                        </div>
+
+                        <!-- Cam 3 -->
+                        <div class="cam-feed aspect-video rounded flex items-end p-3 relative group border border-brand-border md:col-span-2">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-10 transition-opacity">
+                                <span class="text-white text-5xl font-sans tracking-widest opacity-20">BACKYARD</span>
+                            </div>
+                            <div class="relative z-10 w-full flex justify-between text-xs font-mono drop-shadow-md">
+                                <span class="text-white bg-black/50 px-2 py-1 rounded">G5 Turret Ultra</span>
+                                <span class="text-brand-red recording-dot bg-black/50 px-2 py-1 rounded">REC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- System Status & Automation Logs -->
+                    <div class="flex flex-col space-y-4">
+                        <!-- Storage Status -->
+                        <div class="bg-brand-black p-4 border border-brand-border rounded">
+                            <p class="text-brand-muted text-xs uppercase tracking-widest font-bold mb-2">Local Storage (NVR)</p>
+                            <div class="w-full bg-brand-surface rounded-full h-2.5 mb-2 border border-brand-border">
+                                <div class="bg-brand-gold h-2.5 rounded-full" style="width: 45%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-brand-muted font-mono">
+                                <span>3.6 TB Used</span>
+                                <span>8.0 TB Total (24 Days retention)</span>
+                            </div>
+                        </div>
+
+                        <!-- Automation Logs -->
+                        <div class="bg-brand-black p-4 border border-brand-border rounded flex-grow flex flex-col">
+                            <p class="text-brand-muted text-xs uppercase tracking-widest font-bold mb-4">Lutron IoT Automation</p>
+                            <div class="flex-grow overflow-y-auto space-y-3 pr-2 font-mono text-xs">
+                                <div class="flex flex-col border-b border-brand-border pb-2">
+                                    <span class="text-brand-muted">19:42:01 - TRIGGER: Driveway Vehicle</span>
+                                    <span class="text-brand-gold">> ACTION: Lutron Exterior Lights ON (100%)</span>
+                                </div>
+                                <div class="flex flex-col border-b border-brand-border pb-2">
+                                    <span class="text-brand-muted">14:15:22 - TRIGGER: Doorbell Package AI</span>
+                                    <span class="text-green-500">> ACTION: Push Notification Sent</span>
+                                </div>
+                                <div class="flex flex-col border-b border-brand-border pb-2">
+                                    <span class="text-brand-muted">08:00:00 - TIME: Sunrise</span>
+                                    <span class="text-brand-muted">> ACTION: Lutron Porch Lights OFF</span>
+                                </div>
+                                <div class="flex flex-col pb-2">
+                                    <span class="text-brand-muted">02:11:05 - TRIGGER: Backyard Motion</span>
+                                    <span class="text-brand-gold">> ACTION: Floodlight Activated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div style="margin-top: 20px; padding: 15px; background: var(--card-bg); border: 2px solid var(--gold); border-radius: 8px;">
-                    <div style="font-size: 1.1rem; margin-bottom: 5px;">Total Investment:</div>
-                    <div style="font-size: 2.2rem; font-weight: 700; color: var(--gold-bright);">$1,373</div>
-                    <div style="font-size: 0.9rem; color: var(--grey); margin-top: 5px;">One-time cost | $0/month forever</div>
-                </div>
-
-                <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 6px;">
-                    <strong>Coverage:</strong> All entry points + perimeter | 14-day 4K recording | Advanced AI detection | Full network integration
-                </div>
             </div>
 
-            <!-- TIER 3: Estate Protection -->
-            <div class="card">
-                <h3 style="color: var(--gold-bright); border-bottom: 2px solid var(--gold); padding-bottom: 10px;">🥇 TIER 3: Estate Protection</h3>
-                <p style="margin: 15px 0; font-weight: 600; font-size: 1.2rem;">Perfect for: Large Homes, Multi-Building Properties, Estates</p>
-                
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <h4 style="color: var(--gold-bright); margin-bottom: 10px;">Equipment Package:</h4>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cloud-keys-gateways/products/udm-pro" target="_blank" style="color: var(--gold-bright);">UniFi Dream Machine Pro</a> - $379</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cloud-keys-gateways/products/unvr-pro" target="_blank" style="color: var(--gold-bright);">UniFi NVR Pro</a> - $499 (supports 60 cameras, includes 2TB)</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cameras/products/uvc-g5-pro" target="_blank" style="color: var(--gold-bright);">UniFi G5 Pro Camera (6x)</a> - $199 each</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-cameras/products/uvc-g5-bullet" target="_blank" style="color: var(--gold-bright);">UniFi G5 Bullet Camera (2x)</a> - $119 each</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-door-access/products/uvc-g4-doorbell-pro-poe" target="_blank" style="color: var(--gold-bright);">UniFi G4 Doorbell Pro (PoE)</a> - $199</li>
-                        <li><a href="https://store.ui.com/us/en/pro/category/all-switching/products/usw-pro-24-poe" target="_blank" style="color: var(--gold-bright);">UniFi Switch Pro 24 PoE</a> - $499</li>
-                    </ul>
-                </div>
-
-                <div style="margin-top: 20px; padding: 15px; background: var(--card-bg); border: 2px solid var(--gold); border-radius: 8px;">
-                    <div style="font-size: 1.1rem; margin-bottom: 5px;">Total Investment:</div>
-                    <div style="font-size: 2.2rem; font-weight: 700; color: var(--gold-bright);">$2,767</div>
-                    <div style="font-size: 0.9rem; color: var(--grey); margin-top: 5px;">One-time cost | $0/month forever</div>
-                </div>
-
-                <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 6px;">
-                    <strong>Coverage:</strong> Complete property surveillance | 30+ day 4K recording | Multi-site management | Access control ready
-                </div>
-            </div>
         </div>
+    </main>
 
-        <!-- Per-Home Comparison vs Competitors -->
-        <div class="highlight-box" style="background: linear-gradient(135deg, #1A5F1A 0%, #0D3D0D 100%); margin: 40px 0;">
-            <h3 style="font-size: 1.8rem; margin-bottom: 20px;">💰 5-Year Cost Comparison (Per Home)</h3>
-            <div class="stats-grid" style="margin-top: 20px;">
-                <div class="stat-card" style="background: rgba(0,0,0,0.3);">
-                    <div class="stat-label">Tier 1 vs Ring Basic (4 devices)</div>
-                    <div class="stat-value" style="font-size: 2rem;">$675 vs $1,100+</div>
-                    <div class="stat-label">UniFi saves $425 over 5 years</div>
-                </div>
-                <div class="stat-card" style="background: rgba(0,0,0,0.3);">
-                    <div class="stat-label">Tier 2 vs Vivint Complete</div>
-                    <div class="stat-value" style="font-size: 2rem;">$1,373 vs $4,500+</div>
-                    <div class="stat-label">UniFi saves $3,127 over 5 years</div>
-                </div>
-                <div class="stat-card" style="background: rgba(0,0,0,0.3);">
-                    <div class="stat-label">Tier 3 vs ADT Premium</div>
-                    <div class="stat-value" style="font-size: 2rem;">$2,767 vs $8,000+</div>
-                    <div class="stat-label">UniFi saves $5,233 over 5 years</div>
-                </div>
-            </div>
-            <p style="margin-top: 25px; font-size: 1.2rem; text-align: center;"><strong>Plus:</strong> No contracts • No ETFs • No price increases • Complete data ownership</p>
+    <!-- Footer -->
+    <footer class="bg-brand-black border-t border-brand-border py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <img src="logo.jpeg" alt="Xceptional Logo Small" onerror="this.src='../logo.jpeg'" class="h-8 mx-auto mb-4 opacity-50 mix-blend-lighten">
+            <p class="text-brand-muted text-xs tracking-widest uppercase">&copy; 2026 Xceptional Technologies. Detroit, MI. All rights reserved.</p>
         </div>
+    </footer>
 
+    <!-- Scripts -->
+    <script>
+        // Use matching theme from index.html
+        const THEME = { red: '#D32F2F', gold: '#D4AF37', dark: '#111111', surface: '#1E1E1E', border: '#333333', text: '#F3F4F6', muted: '#9CA3AF' };
+        Chart.defaults.color = THEME.text;
+        Chart.defaults.font.family = '"EB Garamond", Garamond, serif';
 
-        <h2 class="section-title">🏠 Core Residential Offerings Comparison</h2>
+        window.onload = function() {
+            // TCO Chart (Residential Focus)
+            new Chart(document.getElementById('tcoResidentialChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Initial Hardware', 'Year 1 Subs.', 'Year 2 Subs.', 'Year 3 Subs.'],
+                    datasets: [
+                        { 
+                            label: 'UniFi HomeConnect', 
+                            data: [1200, 0, 0, 0], // $0 Subs
+                            backgroundColor: THEME.gold,
+                            borderRadius: 4
+                        },
+                        { 
+                            label: 'Ring / Nest (Cloud Pro)', 
+                            data: [800, 200, 200, 200], // Subscriptions add up
+                            backgroundColor: THEME.surface, 
+                            borderColor: THEME.border, 
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { 
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            backgroundColor: THEME.surface, 
+                            borderColor: THEME.border, 
+                            borderWidth: 1
+                        },
+                        legend: { position: 'top', labels: { color: THEME.text } }
+                    },
+                    scales: { 
+                        x: { stacked: true, grid: { display: false } }, // Stacked to show cumulative
+                        y: { stacked: true, grid: { color: THEME.border }, ticks: { callback: (val) => '$' + val } }
+                    }
+                }
+            });
 
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Provider</th>
-                    <th>Core Model</th>
-                    <th>Monitoring</th>
-                    <th>Storage</th>
-                    <th>App & Ecosystem</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="highlight-row">
-                    <td><strong>UniFi Protect</strong></td>
-                    <td>On-prem NVR, PoE cameras, local management</td>
-                    <td>Self-monitored (3rd-party integration available)</td>
-                    <td>Local HDD/SSD, 24/7 continuous recording, no cloud fees</td>
-                    <td>UniFi OS app; unified with Network, Access, Talk</td>
-                </tr>
-                <tr>
-                    <td><strong>Ring</strong></td>
-                    <td>Wi-Fi cameras/doorbells, optional alarm hub</td>
-                    <td>Optional pro monitoring on some plans</td>
-                    <td>Cloud-only, subscription required for video history</td>
-                    <td>Ring app, Alexa ecosystem focus</td>
-                </tr>
-                <tr>
-                    <td><strong>Vivint</strong></td>
-                    <td>Pro-installed smart security + automation</td>
-                    <td>24/7 professional monitoring required</td>
-                    <td>Cloud-centric, limited local options</td>
-                    <td>Vivint app, deep smart home integration</td>
-                </tr>
-                <tr>
-                    <td><strong>Xfinity Home</strong></td>
-                    <td>Security sensors + cameras tied to Xfinity Internet</td>
-                    <td>Pro monitoring (Self-Protection is video-only)</td>
-                    <td>Cloud storage with subscription tiers</td>
-                    <td>Xfinity app, X1 TV integration, closed ecosystem</td>
-                </tr>
-                <tr>
-                    <td><strong>AT&T Connected Life</strong></td>
-                    <td>Google Nest-based cameras, doorbells, sensors</td>
-                    <td>Self or pro monitoring via partner (e.g., Abode)</td>
-                    <td>30-day cloud video history via Nest Aware</td>
-                    <td>Google Home / Nest app, AT&T Smart Home Manager</td>
-                </tr>
-                <tr>
-                    <td><strong>ADT</strong></td>
-                    <td>Traditional panel + sensors; now also Google Nest bundles</td>
-                    <td>24/7 professional monitoring required on most plans</td>
-                    <td>Cloud event clips; some local storage options</td>
-                    <td>ADT+ or Control app; integrates with Google ecosystem</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">💰 Cost & Contract Breakdown (Per Home)</h2>
-
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Provider</th>
-                    <th>Typical Equipment Cost</th>
-                    <th>Monthly Fees</th>
-                    <th>Contract Term</th>
-                    <th>Early Cancellation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="highlight-row">
-                    <td><strong>UniFi Protect</strong></td>
-                    <td>$800-$1,500 one-time (gateway, PoE switch, 4-6 cams)</td>
-                    <td class="check">$0 (no license or cloud storage fees)</td>
-                    <td>None</td>
-                    <td class="check">No ETF</td>
-                </tr>
-                <tr>
-                    <td><strong>Ring</strong></td>
-                    <td>$300-$800 in devices per home</td>
-                    <td>$5-$20 per home for cloud recording & features</td>
-                    <td>No service contract</td>
-                    <td>No ETF; subscription cancelable anytime with prorated refund</td>
-                </tr>
-                <tr>
-                    <td><strong>Vivint</strong></td>
-                    <td>$199-$1,200+ (often financed over term)</td>
-                    <td>$25-$50+ for monitoring and services</td>
-                    <td>3-5 years when equipment is financed</td>
-                    <td class="cross">Up to 50-100% of remaining balance; fees commonly in hundreds</td>
-                </tr>
-                <tr>
-                    <td><strong>Xfinity Home</strong></td>
-                    <td>$360-$600 (or financed with service bundle)</td>
-                    <td>$10 (Self-Protection) to ~$45-$55 with monitoring</td>
-                    <td>1-2 year agreement for best pricing</td>
-                    <td>About $10 per remaining month on term</td>
-                </tr>
-                <tr>
-                    <td><strong>AT&T Connected Life</strong></td>
-                    <td>$399-$699 starter kits with Nest devices</td>
-                    <td>Approx. $11-$22 depending on plan and monitoring option</td>
-                    <td>Month-to-month or 1-2 years depending on bundle</td>
-                    <td>Prorated ETF when tied to AT&T term agreements</td>
-                </tr>
-                <tr>
-                    <td><strong>ADT</strong></td>
-                    <td>$269-$1,500+ (DIY vs pro bundles)</td>
-                    <td>~$25-$65 for monitoring and services</td>
-                    <td>Typically 36 months (24 in some states)</td>
-                    <td class="cross">About 75% of remaining monitoring charges if canceled early</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="pane-feature">
-            <h3>🔒 Privacy, Data Ownership & Control</h3>
-            <p><strong>Cloud-centric systems</strong> make video and event data dependent on third-party platforms and ongoing payments, while <strong>UniFi keeps data on hardware the homeowner owns and controls.</strong></p>
-        </div>
-
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Provider</th>
-                    <th>Data Ownership</th>
-                    <th>Local Recording</th>
-                    <th>Third-Party Dependencies</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="highlight-row">
-                    <td><strong>UniFi Protect</strong></td>
-                    <td class="check">Homeowner controls video on-prem devices</td>
-                    <td class="check">Yes, full-time NVR recording with configurable retention</td>
-                    <td>Optional remote access via UniFi Cloud; core features work without it</td>
-                </tr>
-                <tr>
-                    <td><strong>Ring</strong></td>
-                    <td>Video stored in Ring cloud; access requires active plan</td>
-                    <td class="cross">No; core recording is cloud-only</td>
-                    <td>Amazon Web Services, Ring service uptime and policies</td>
-                </tr>
-                <tr>
-                    <td><strong>Vivint</strong></td>
-                    <td>Cloud-based storage and account control via Vivint</td>
-                    <td>Limited local options; primarily cloud event-based recording</td>
-                    <td>Vivint cloud and monitoring center</td>
-                </tr>
-                <tr>
-                    <td><strong>Xfinity Home</strong></td>
-                    <td>Event clips stored in Comcast cloud</td>
-                    <td>Primarily cloud clip storage</td>
-                    <td>Comcast backend, Xfinity service relationship</td>
-                </tr>
-                <tr>
-                    <td><strong>AT&T Connected Life</strong></td>
-                    <td>Video handled via Google Nest infrastructure</td>
-                    <td>Cloud history; local options depend on Nest devices</td>
-                    <td>Google account, Nest Aware subscription stack</td>
-                </tr>
-                <tr>
-                    <td><strong>ADT</strong></td>
-                    <td>Monitoring and storage via ADT and partners (e.g., Google)</td>
-                    <td>Primarily cloud event clips with some on-device options</td>
-                    <td>ADT alarm network, Google cloud where applicable</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">✅ When to Recommend UniFi for Residential</h2>
-
-        <div class="dashboard-grid">
-            <div class="card">
-                <h3>Multi-Home Portfolios</h3>
-                <p>Clients with multiple homes who want one dashboard to view and manage all cameras, alerts, and networks across all properties with consistent policies.</p>
-            </div>
-            <div class="card">
-                <h3>Cost Predictability</h3>
-                <p>Replace long-term monitoring and cloud fees with fixed hardware investment. No surprise subscription increases or contract renewals.</p>
-            </div>
-            <div class="card">
-                <h3>Privacy-Driven Clients</h3>
-                <p>Video never leaves the property unless explicitly allowed, aligning with security and compliance-minded residential owners.</p>
-            </div>
-            <div class="card">
-                <h3>Technical Households</h3>
-                <p>For homes already running UniFi gateways/APs, Protect is a natural extension with no new vendor lock-in or complexity.</p>
-            </div>
-            <div class="card">
-                <h3>PoE Infrastructure</h3>
-                <p>Properties where wiring for PoE is feasible enable stable power and data with fewer failure points than Wi-Fi battery cameras.</p>
-            </div>
-            <div class="card">
-                <h3>Long-Term Value</h3>
-                <p>Homeowners who want equipment that continues working at full capacity forever, with no subscription expiration or cloud dependency.</p>
-            </div>
-        </div>
-
-        <div class="pane-feature">
-            <h3>🎯 Xceptional Technologies Deployment Strategy</h3>
-            <p>By standardizing on UniFi for residential clients, we provide:</p>
-            <ul>
-                <li><strong>Single vendor ecosystem:</strong> Consistent updates, security patches, and support across all properties</li>
-                <li><strong>Unified billing:</strong> One invoice, one contract, one support channel - simplifying property management</li>
-                <li><strong>Scalability path:</strong> Grow from single home to multi-property estate with identical management tools</li>
-                <li><strong>Staff training:</strong> One platform reduces learning curve and support overhead for property managers</li>
-                <li><strong>Disaster recovery:</strong> Local data storage means operations continue even if internet fails</li>
-                <li><strong>Future-proof investment:</strong> Hardware maintains 100% functionality regardless of licensing changes or company decisions</li>
-            </ul>
-        </div>
-
-        <div class="highlight-box" style="background: linear-gradient(135deg, #1A5F1A 0%, #0D3D0D 100%); margin: 30px 0;">
-            <p><strong>4-Home Portfolio Example:</strong></p>
-            <p style="font-size: 1.3rem; margin-top: 15px;">• UniFi Total: $4,000-$6,000 one-time investment</p>
-            <p style="font-size: 1.3rem;">• Ring/Vivint/ADT Total: $8,000-$14,000 over 5 years (equipment + subscriptions)</p>
-            <p style="margin-top: 20px; color: var(--gold-bright); font-weight: bold; font-size: 1.4rem;">UniFi Advantage: $4,000-$8,000 savings across 4 homes with superior local control</p>
-        </div>
-
-        <h2 class="section-title">📈 Return on Investment Analysis</h2>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Year 1 UniFi Investment</div>
-                <div class="stat-value">$1,000-$1,500</div>
-                <div class="stat-label">Per Home Equipment Only</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Year 1 Competitor Total</div>
-                <div class="stat-value">$500-$2,000</div>
-                <div class="stat-label">Equipment + First Year Fees</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Years 2-5 UniFi Cost</div>
-                <div class="stat-value">$0</div>
-                <div class="stat-label">No Recurring Charges</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Years 2-5 Competitor Cost</div>
-                <div class="stat-value">$400-$2,000</div>
-                <div class="stat-label">Annual Subscriptions/Monitoring</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>10-Year Total Cost Projection</h3>
-            <ul>
-                <li><strong>UniFi Protect:</strong> $1,000-$1,500 (one-time hardware, lifetime use)</li>
-                <li><strong>Ring/Arlo:</strong> $3,000-$5,000 (devices + 10 years of cloud subscriptions)</li>
-                <li><strong>Vivint/ADT:</strong> $5,000-$15,000 (equipment financing + monitoring contracts)</li>
-                <li><strong>Xfinity Home:</strong> $4,000-$8,000 (equipment + bundled subscription services)</li>
-            </ul>
-            <p style="margin-top: 20px; color: var(--gold-bright); font-weight: bold;">UniFi delivers 60-90% cost savings over 10 years compared to subscription-based competitors while providing superior privacy and local control.</p>
-        </div>
-
-        <footer class="footer">
-            <div style="font-size: 1.2em; margin-bottom: 10px;">© 2026 Xceptional Technologies, LLC | Detroit, Michigan</div>
-            <div style="color: var(--gold);">Empowering Detroit's Residential Security through Unified, No-Subscription Solutions</div>
-        </footer>
-    </div>
-
-        <!-- Power Options: PoE vs Solar -->
-    <h2 class="section-title">⚡ Power & Connectivity Options</h2>
-    
-    <div class="pane-feature">
-        <h3>🔌 PoE (Power over Ethernet) vs ☀️ Solar Power</h3>
-        <p>UniFi offers <strong>flexible power options</strong> to match your property's infrastructure and environmental constraints.</p>
-    </div>
-
-    <table class="comparison-table">
-        <thead>
-            <tr>
-                <th>Power Method</th>
-                <th>Best For</th>
-                <th>Installation</th>
-                <th>Reliability</th>
-                <th>Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="highlight-row">
-                <td><strong>PoE (Power over Ethernet)</strong></td>
-                <td>Properties with existing or planned ethernet infrastructure</td>
-                <td class="check">Single cable for power & data; cleaner installation</td>
-                <td class="check">99.9% uptime with UPS backup on switch</td>
-                <td><a href="https://store.ui.com/us/en/category/switching-utility-poe/products" target="_blank">PoE Switch from $109</a></td>
-            </tr>
-            <tr>
-                <td><strong>Solar Power</strong></td>
-                <td>Remote locations, gates, perimeter cameras without easy power access</td>
-                <td>No wiring needed; wireless connectivity via Wi-Fi or 4G LTE</td>
-                <td>Weather dependent; requires battery maintenance</td>
-                <td>Solar panel + battery: $150-400 per camera location</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div style="margin: 30px 0; padding: 20px; background: var(--gold-bright); color: #000; border-radius: 8px;">
-        <p><strong>💡 Recommendation:</strong> Use PoE wherever possible for maximum reliability. Reserve solar for gates, perimeter cameras, or temporary monitoring locations.</p>
-    </div>
-
-    <!-- UDB & Remote Connectivity -->
-    <h2 class="section-title">🌐 UDB & Remote Connectivity</h2>
-    
-    <div class="pane-feature">
-        <h3>📡 UniFi Device Beacon (UDB) & Remote Access</h3>
-        <p>Enable <strong>secure remote management</strong> and monitoring across all properties without complex VPN setups or port forwarding.</p>
-    </div>
-
-    <div class="dashboard-grid">
-        <div class="card">
-            <h3>UniFi Cloud Remote Access</h3>
-            <p>Access cameras, view live feeds, and manage settings from anywhere via <a href="https://unifi.ui.com" target="_blank">unifi.ui.com</a> or the UniFi Protect mobile app.</p>
-        </div>
-        <div class="card">
-            <h3>UDB for Bluetooth Setup</h3>
-            <p>Simplify initial camera setup using Bluetooth proximity - no need to be on the same network. Perfect for installers and remote properties.</p>
-        </div>
-        <div class="card">
-            <h3>Multi-Site Management</h3>
-            <p>Manage all 4 homes from a single cloud dashboard with unified alerts, firmware updates, and configuration templates.</p>
-        </div>
-        <div class="card">
-            <h3>VPN Integration</h3>
-            <p>For maximum security, use UniFi Gateway's built-in site-to-site VPN or <a href="https://store.ui.com/us/en/products/uck-g2-plus" target="_blank">Cloud Key</a> for encrypted remote access.</p>
-        </div>
-    </div>
-
-    <!-- Access Control & Integrations -->
-    <h2 class="section-title">🚪 Access Control & UniFi Integrations</h2>
-    
-    <div class="pane-feature">
-        <h3>🔑 Complete Property Security Beyond Cameras</h3>
-        <p>Extend UniFi Protect with <strong>access control, environmental monitoring, and complete property automation</strong> using UniFi's ecosystem.</p>
-    </div>
-
-    <table class="comparison-table">
-        <thead>
-            <tr>
-                <th>Integration</th>
-                <th>Use Cases</th>
-                <th>Equipment Needed</th>
-                <th>Cost per Location</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="highlight-row">
-                <td><strong><a href="https://store.ui.com/us/en/pro/category/all-access" target="_blank">UniFi Access</a></strong></td>
-                <td>Smart door locks, keycard/fob entry, visitor management, audit logs</td>
-                <td>Access Hub + Door Locks or Readers</td>
-                <td><a href="https://store.ui.com/us/en/products/ua-hub" target="_blank">Hub $199</a> + <a href="https://store.ui.com/us/en/products/ua-pro" target="_blank">Reader $179</a></td>
-            </tr>
-            <tr>
-                <td><strong>Gate Access Control</strong></td>
-                <td>Automatic gate entry, delivery driver codes, guest access scheduling</td>
-                <td>Access Reader + Gate Controller Integration</td>
-                <td>$300-500 per gate (reader + controller + install)</td>
-            </tr>
-            <tr>
-                <td><strong><a href="https://store.ui.com/us/en/category/all-cloud-keys-gateways" target="_blank">UniFi Talk</a></strong></td>
-                <td>Video intercoms at gates/doors with two-way audio and remote unlock</td>
-                <td>UniFi Talk devices integrated with Access system</td>
-                <td><a href="https://store.ui.com/us/en/category/unifi-talk" target="_blank">Talk Phone from $179</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 style="margin-top: 40px; color: var(--gold-bright); font-size: 1.8em;">🔗 SuperLink & Advanced Integrations</h3>
-    
-    <div class="dashboard-grid">
-        <div class="card">
-            <h3>UniFi Connect</h3>
-            <p>Integrate environmental sensors, smart plugs, and displays for comprehensive property monitoring beyond just security.</p>
-        </div>
-        <div class="card">
-            <h3>Network Integration</h3>
-            <p>All UniFi devices share a single management interface - Protect (cameras), Access (doors), Talk (intercoms), and Network (switches/APs).</p>
-        </div>
-        <div class="card">
-            <h3>API & Automation</h3>
-            <p>Use UniFi's API for custom automations: trigger lights when motion detected, send alerts to property manager dashboard, integrate with home automation.</p>
-        </div>
-        <div class="card">
-            <h3>Future-Proof Ecosystem</h3>
-            <p>As UniFi expands (lighting, HVAC controls, etc.), all devices work together seamlessly without vendor lock-in or compatibility issues.</p>
-        </div>
-    </div>
-
-    <div style="margin: 30px 0; padding: 20px; background: linear-gradient(135deg, #1A5F1A 0%, #0D300D 100%); border-radius: 8px;">
-        <p style="color: var(--gold-bright); font-weight: bold; font-size: 1.2em;">🏆 Complete Property Solution</p>
-        <p style="color: #ffffff;">For residential portfolios, UniFi delivers a unified platform where cameras, access control, networking, and communications work together - managed from a single dashboard with one support contact.</p>
-    </div>
+            // Radar Chart (Privacy & Capabilities)
+            new Chart(document.getElementById('residentialRadarChart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: ['Local Data Sovereignty', 'No Subscription Fees', '24/7 Continuous Recording', 'Smart Home (Lutron) Sync', 'Video Scrubbing Speed'],
+                    datasets: [
+                        { 
+                            label: 'UniFi Protect', 
+                            data: [100, 100, 100, 95, 100], 
+                            backgroundColor: THEME.red + '40', 
+                            borderColor: THEME.red, 
+                            borderWidth: 2, 
+                            pointBackgroundColor: THEME.gold 
+                        },
+                        { 
+                            label: 'Cloud Alternatives', 
+                            data: [0, 0, 40, 60, 30], // Cloud usually relies on motion events, not 24/7, and scrubbing is slow
+                            backgroundColor: THEME.muted + '20', 
+                            borderColor: THEME.muted, 
+                            borderWidth: 2 
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { 
+                        r: { 
+                            angleLines: { color: THEME.border }, 
+                            grid: { color: THEME.border }, 
+                            pointLabels: { color: THEME.text, font: { size: 11 } }, 
+                            ticks: { display: false, min: 0, max: 100 } 
+                        } 
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        };
+    </script>
 </body>
 </html>
