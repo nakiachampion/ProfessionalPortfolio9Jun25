@@ -3,234 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Xceptional Technologies - Detroit-based MSP specializing in Ubiquiti UniFi solutions for small businesses and entrepreneurs">
-    <title>Xceptional Technologies | Detroit MSP & UniFi Solutions</title>
+    <title>Xceptional Technologies | Full-Stack UniFi MSP</title>
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Xceptional Technologies - UniFi Solutions Detroit">
-    <meta property="og:description" content="Enterprise-grade network solutions, managed IT services, and digital literacy programs for Detroit SMBs">
-    <meta property="og:image" content="assets/images/og-home.png">
-    <meta property="og:type" content="website">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Fonts: Inter for a clean, Unifi-like technical aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#050505',    
+                            dark: '#111111',     
+                            surface: '#1E1E1E',  
+                            border: '#333333',   
+                            red: '#D32F2F',      
+                            redHover: '#B71C1C',
+                            gold: '#D4AF37',     
+                            text: '#F3F4F6',     
+                            muted: '#9CA3AF'     
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #111111;
+            color: #F3F4F6;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Chart Container Strict Constraints */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Interactive Service Cards */
+        .service-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, #D32F2F);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            background-color: #252525;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D32F2F; }
+
+        /* Tech Grid Background pattern */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, #1E1E1E 1px, transparent 1px),
+                linear-gradient(to bottom, #1E1E1E 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+
+    <!-- Chosen Palette: Deep Black (#050505), Xceptional Red (#D32F2F), Circuit Gold (#D4AF37) -->
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header class="site-header">
-        <div class="container">
-            <div class="logo-section">
-                <img src="assets/images/xtech-logo.png" alt="Xceptional Technologies Logo" class="logo">
-                <h1 class="brand-name">Xceptional Technologies</h1>
+<body class="bg-brand-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brand-black/95 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo Integration (Updated to .jpeg) -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer h-full py-2" onclick="scrollToTop()">
+                    <img src="logo.jpeg" alt="Xceptional Technologies" class="h-full object-contain mix-blend-lighten">
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#leadership" class="text-brand-muted hover:text-brand-text text-sm uppercase tracking-widest font-semibold transition-colors">Mission</a>
+                    <a href="#services" class="text-brand-muted hover:text-brand-text text-sm uppercase tracking-widest font-semibold transition-colors">UniFi Solutions</a>
+                    <a href="#dashboard" class="text-brand-muted hover:text-brand-text text-sm uppercase tracking-widest font-semibold transition-colors">ROI Metrics</a>
+                    <a href="#contact" class="px-6 py-2.5 rounded bg-brand-red text-white hover:bg-brand-redHover transition-colors text-sm uppercase tracking-widest font-bold border border-transparent hover:border-brand-gold/50 shadow-[0_0_15px_rgba(211,47,47,0.3)]">
+                        Engage
+                    </a>
+                </div>
             </div>
-            <nav class="main-nav">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="solutions.html" class="nav-link">Solutions</a>
-                <a href="plan.html" class="nav-link">Business Plan</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </nav>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2 class="hero-title">Empowering Detroit's Small Businesses</h2>
-                    <p class="hero-subtitle">Enterprise-Grade UniFi Solutions | Managed IT Services | Digital Literacy</p>
-                    <p class="hero-description">Full-stack Ubiquiti UniFi ecosystem including networking, EV charging, VoIP, access control, and smart IoT solutions tailored for Detroit SMBs and entrepreneurs.</p>
-                    <div class="cta-buttons">
-                        <a href="contact.html" class="btn btn-primary">Get Started</a>
-                        <a href="services.html" class="btn btn-secondary">View Services</a>
-                    </div>
-                </div>
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-brand-black">
+        <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+        <!-- Canvas Background -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-60 pointer-events-none"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-black/50 to-brand-dark"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in-section">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+                Detroit's Full-Stack <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-gold">UniFi</span> MSP.
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-brand-muted max-w-3xl mx-auto font-light leading-relaxed">
+                We bridge the digital divide for SMBs and entrepreneurs. From enterprise-grade networking and physical security to EV charging infrastructure—all managed under a single pane of glass.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-6">
+                <button onclick="document.getElementById('services').scrollIntoView()" class="px-8 py-4 bg-brand-surface text-brand-text border border-brand-border rounded hover:bg-brand-red hover:border-brand-red transition-all duration-300 font-semibold tracking-wide uppercase text-sm">
+                    Explore Solutions
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Mission & Vision -->
-        <section class="mission-vision">
-            <div class="container">
-                <div class="section-grid">
-                    <div class="card">
-                        <h3>Our Mission</h3>
-                        <p>To empower Detroit communities through accessible technology, fostering digital literacy and providing pathways to economic opportunity.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Our Vision</h3>
-                        <p>To be the leading provider of Ubiquiti solutions in Detroit, renowned for community impact and commitment to closing the digital divide.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Services -->
-        <section class="services-overview">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🌐</div>
-                        <h3>Managed IT Services</h3>
-                        <p>24/7 network monitoring, support, and management for Detroit SMBs</p>
-                        <a href="services.html#managed-it" class="service-link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>UniFi EV Charging</h3>
-                        <p>Smart EV charger deployment and management for businesses</p>
-                        <a href="services.html#ev-charging" class="service-link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">📞</div>
-                        <h3>UniFi Talk VoIP</h3>
-                        <p>Enterprise phone systems with unlimited internal calling</p>
-                        <a href="services.html#voip" class="service-link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🎓</div>
-                        <h3>Training Programs</h3>
-                        <p>Ubiquiti certifications and IT skills development</p>
-                        <a href="services.html#training" class="service-link">Learn More →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Live UniFi Products -->
-        <section class="unifi-products">
-            <div class="container">
-                <h2 class="section-title">Live UniFi Product Catalog</h2>
-                <p class="section-description">Browse the latest Ubiquiti products we deploy and support. Updated automatically twice daily.</p>
+    <!-- Leadership / Mission Section -->
+    <section id="leadership" class="py-24 bg-brand-dark relative border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Product Filters -->
-                <div id="product-filters" class="product-filters">
-                    <button class="filter-btn active" data-category="all">All Products</button>
-                    <button class="filter-btn" data-category="networking">Networking</button>
-                    <button class="filter-btn" data-category="protect">Protect</button>
-                    <button class="filter-btn" data-category="access">Access</button>
-                    <button class="filter-btn" data-category="talk">Talk</button>
+                <!-- Headshot Column (Updated to .jpeg) -->
+                <div class="lg:col-span-5 fade-in-section">
+                    <div class="relative group">
+                        <!-- Decorative framing -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-red to-brand-gold rounded-xl opacity-30 group-hover:opacity-60 transition duration-500 blur-md"></div>
+                        <div class="relative rounded-xl overflow-hidden border border-brand-border bg-brand-surface aspect-[4/5] shadow-2xl">
+                            <img src="headshot.jpeg" alt="Nakia Champion - Founder" class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                            
+                            <!-- Overlay badge -->
+                            <div class="absolute bottom-4 left-4 right-4 bg-brand-black/80 backdrop-blur-sm border border-brand-border p-4 rounded text-left">
+                                <h3 class="text-lg font-bold text-white">Nakia Champion, CSIE+</h3>
+                                <p class="text-brand-gold text-sm font-semibold tracking-wider">Founder & Lead Architect</p>
+                                <p class="text-brand-muted text-xs mt-1">&#128205; Detroit, MI</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Product Grid -->
-                <div id="product-list" class="product-grid">
-                    <div class="loading">Loading latest products...</div>
+                <!-- Bio / Philosophy Column -->
+                <div class="lg:col-span-7 fade-in-section">
+                    <h2 class="text-sm font-bold text-brand-red uppercase tracking-widest mb-2">Our Mission & Methodology</h2>
+                    <h3 class="text-4xl font-bold text-brand-text mb-6">Detail-Oriented. Community-Driven.</h3>
+                    
+                    <div class="space-y-6 text-brand-muted text-lg font-light leading-relaxed">
+                        <p>
+                            With over 15 years of IT experience and a CompTIA CSIE+ certification, my philosophy is simple: <strong class="text-white font-medium">Automate the mundane to focus on the critical.</strong> I believe in providing clients with detailed, visually mapped network documentation so there is zero ambiguity in their infrastructure.
+                        </p>
+                        <p>
+                            Xceptional Technologies was founded to empower Detroit. By specializing exclusively in the Ubiquiti ecosystem, we provide SMBs with enterprise-level capabilities—without the exorbitant enterprise licensing fees. Beyond infrastructure, we are actively closing the digital divide by training the next generation of Detroit IT professionals through official certification programs.
+                        </p>
+                        
+                        <!-- Mini capability tags -->
+                        <div class="flex flex-wrap gap-3 mt-8">
+                            <span class="px-3 py-1 bg-brand-surface border border-brand-border rounded text-sm text-brand-text">&#128423; UniFi Architecture</span>
+                            <span class="px-3 py-1 bg-brand-surface border border-brand-border rounded text-sm text-brand-text">&#128274; Security Automation</span>
+                            <span class="px-3 py-1 bg-brand-surface border border-brand-border rounded text-sm text-brand-text">&#9889; EV Infrastructure</span>
+                            <span class="px-3 py-1 bg-brand-surface border border-brand-border rounded text-sm text-brand-text">&#128218; Digital Literacy</span>
+                        </div>
+                    </div>
                 </div>
-
-                <p id="last-updated" class="last-updated"></p>
+                
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Key Metrics -->
-        <section class="metrics">
-            <div class="container">
-                <h2 class="section-title">Our Goals</h2>
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-number">150</div>
-                        <div class="metric-label">Individuals Trained</div>
-                        <div class="metric-period">Year 1 Goal</div>
+    <!-- Services Section (Business Plan Core Offerings) -->
+    <section id="services" class="py-24 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-sm font-bold text-brand-red uppercase tracking-widest mb-2">Our Capabilities</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-text">The UniFi Ecosystem Advantage</h3>
+                <p class="mt-4 text-brand-muted max-w-2xl mx-auto">
+                    Scalable, subscription-free infrastructure designed for modern Detroit businesses.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-section">
+                <!-- Service 1: BusinessConnect -->
+                <div class="service-card bg-brand-surface p-8 rounded-lg border border-brand-border cursor-pointer" onclick="updateDashboardContext('msp')">
+                    <div class="text-brand-gold text-4xl mb-6">&#128423;</div>
+                    <h3 class="text-xl font-bold text-white mb-3">BusinessConnect Managed IT</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                        Full-stack deployment and monitoring of UniFi Network, Talk (VoIP), Access, and Protect (Surveillance). Complete network visibility and security auditing.
+                    </p>
+                    <div class="text-brand-red text-xs font-bold uppercase tracking-wider flex items-center">
+                        View TCO Metrics <span class="ml-2">&#8594;</span>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-number">20</div>
-                        <div class="metric-label">SMBs Served</div>
-                        <div class="metric-period">Year 1 Goal</div>
+                </div>
+
+                <!-- Service 2: EV Charging -->
+                <div class="service-card bg-brand-surface p-8 rounded-lg border border-brand-border cursor-pointer" onclick="updateDashboardContext('ev')">
+                    <div class="text-brand-gold text-4xl mb-6">&#9889;</div>
+                    <h3 class="text-xl font-bold text-white mb-3">UniFi EV Charging</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                        Commercial EV charger deployment featuring intelligent load balancing and centralized management via UniFi Connect, supporting Detroit's mobility initiatives.
+                    </p>
+                    <div class="text-brand-red text-xs font-bold uppercase tracking-wider flex items-center">
+                        View Integration <span class="ml-2">&#8594;</span>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-number">50</div>
-                        <div class="metric-label">EV Chargers Deployed</div>
-                        <div class="metric-period">Via Partnerships</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-number">30</div>
-                        <div class="metric-label">IT Job Placements</div>
-                        <div class="metric-period">Year 1 Goal</div>
+                </div>
+
+                <!-- Service 3: Training -->
+                <div class="service-card bg-brand-surface p-8 rounded-lg border border-brand-border cursor-pointer" onclick="updateDashboardContext('training')">
+                    <div class="text-brand-gold text-4xl mb-6">&#128218;</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Community IT Training</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-4">
+                        Bridging the digital divide with comprehensive training for Ubiquiti certifications (UFSP, URSCA, UBWS). Empowering local residents with highly hirable tech skills.
+                    </p>
+                    <div class="text-brand-red text-xs font-bold uppercase tracking-wider flex items-center">
+                        View Impact <span class="ml-2">&#8594;</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Community Impact -->
-        <section class="community-impact">
-            <div class="container">
-                <h2 class="section-title">Bridging Detroit's Digital Divide</h2>
-                <p class="section-description">Xceptional Technologies combines enterprise technology with community empowerment through:</p>
-                <div class="impact-grid">
-                    <div class="impact-item">
-                        <h4>Affordable Solutions</h4>
-                        <p>Enterprise-grade technology at SMB-friendly pricing</p>
+    <!-- Interactive Data Dashboard -->
+    <section id="dashboard" class="py-24 bg-brand-dark border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center fade-in-section">
+                <h2 class="text-sm font-bold text-brand-red uppercase tracking-widest mb-2">Data & Analytics</h2>
+                <h3 class="text-3xl font-bold text-brand-text">Visualizing The XTech Advantage</h3>
+                <p class="mt-4 text-brand-muted max-w-2xl mx-auto" id="dashboard-intro">
+                    Data visualization is key to our methodology. Select a service above to filter these metrics, or explore the financial and operational benefits of our UniFi-centric approach below.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in-section">
+                
+                <!-- Chart 1: Cost Comparison (Bar) -->
+                <div class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-lg">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-white">3-Year TCO: UniFi vs. Legacy Enterprise</h3>
+                        <p class="text-xs text-brand-muted mt-1">Comparing Hardware, Software Licensing, and Support Costs for a 20-user SMB.</p>
                     </div>
-                    <div class="impact-item">
-                        <h4>Skills Training</h4>
-                        <p>Ubiquiti certification programs creating career pathways</p>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
                     </div>
-                    <div class="impact-item">
-                        <h4>Community Partnerships</h4>
-                        <p>Collaborations with Genesis Hope CDC and local organizations</p>
+                </div>
+
+                <!-- Chart 2: Ecosystem Integration (Radar) -->
+                <div class="bg-brand-surface p-6 rounded-xl border border-brand-border shadow-lg">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-white">"Single Pane of Glass" Integration</h3>
+                        <p class="text-xs text-brand-muted mt-1">Our comprehensive managed coverage across the Ubiquiti ecosystem.</p>
                     </div>
-                    <div class="impact-item">
-                        <h4>Local Job Creation</h4>
-                        <p>Building Detroit's technology workforce</p>
+                    <div class="chart-container">
+                        <canvas id="ecosystemChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Contextual Insight Box -->
+            <div class="mt-8 bg-brand-black border border-brand-border p-6 rounded-lg fade-in-section">
+                <div class="flex items-start">
+                    <div class="text-brand-gold text-2xl mr-4">&#9888;</div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">Architectural Insight</h4>
+                        <p class="text-brand-muted text-sm" id="insight-text">
+                            <strong>Transparent Infrastructure:</strong> Every BusinessConnect deployment includes comprehensive visual tutorials and detailed network maps. We eliminate licensing fees (often required by Cisco/Meraki) and automate system maintenance, delivering average gross margin efficiencies of 55-60% for our clients.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Call to Action -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Transform Your Business?</h2>
-                    <p>Let's discuss how Xceptional Technologies can help your business thrive with enterprise-grade UniFi solutions.</p>
-                    <a href="contact.html" class="btn btn-large">Schedule a Consultation</a>
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-black border-t border-brand-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-surface border border-brand-border rounded-xl shadow-2xl overflow-hidden fade-in-section">
+                <div class="grid grid-cols-1 md:grid-cols-5">
+                    
+                    <!-- Contact Info -->
+                    <div class="p-10 bg-[#151515] text-white flex flex-col justify-between md:col-span-2 border-r border-brand-border">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">Initiate Deployment.</h2>
+                            <p class="text-brand-muted text-sm mb-8">Request an infrastructure audit, EV charging consultation, or training program details.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="text-brand-red text-xl">&#9993;</span>
+                                <a href="mailto:x_technologies@live.com" class="text-sm hover:text-brand-gold transition-colors break-all">x_technologies@live.com</a>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-brand-red text-xl">&#9742;</span>
+                                <span class="text-sm">Detroit Operations</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-brand-red text-xl">&#128274;</span>
+                                <span class="text-sm">SMB & Enterprise Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="p-10 md:col-span-3">
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                            <div class="mb-5">
+                                <label class="block text-brand-muted text-xs font-bold uppercase tracking-wider mb-2" for="name">Identifier</label>
+                                <input class="w-full px-4 py-3 bg-brand-dark border border-brand-border text-white rounded focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-colors" id="name" type="text" placeholder="Name or Organization" required>
+                            </div>
+                            <div class="mb-5">
+                                <label class="block text-brand-muted text-xs font-bold uppercase tracking-wider mb-2" for="email">Return Channel</label>
+                                <input class="w-full px-4 py-3 bg-brand-dark border border-brand-border text-white rounded focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-colors" id="email" type="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-brand-muted text-xs font-bold uppercase tracking-wider mb-2" for="message">Project Parameters</label>
+                                <textarea class="w-full px-4 py-3 bg-brand-dark border border-brand-border text-white rounded focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-colors h-32 resize-none" id="message" placeholder="Details regarding Network Setup, EV Charging, or Certification Training..." required></textarea>
+                            </div>
+                            <button class="w-full bg-brand-red text-white font-bold py-3 px-4 rounded hover:bg-brand-redHover transition-colors border border-transparent hover:border-brand-gold/50 shadow-[0_0_10px_rgba(211,47,47,0.2)]" type="submit">
+                                Transmit Request
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Xceptional Technologies, LLC</h4>
-                    <p>Detroit-based MSP specializing in Ubiquiti UniFi solutions</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html#managed-it">Managed IT</a></li>
-                        <li><a href="services.html#ev-charging">EV Charging</a></li>
-                        <li><a href="services.html#training">Training</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="plan.html">Business Plan</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="mailto:info@xceptionaltechnologies.com">Email</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Xceptional Technologies, LLC. All rights reserved.</p>
-            </div>
+    <footer class="bg-brand-black border-t border-brand-border py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Logo Integration (Updated to .jpeg) -->
+            <img src="logo.jpeg" alt="Xceptional Logo Small" class="h-8 mx-auto mb-4 opacity-50 mix-blend-lighten">
+            <p class="text-brand-muted text-xs tracking-widest uppercase">&copy; 2026 Xceptional Technologies. Detroit, MI. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script type="module" src="assets/js/unifi-client.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Application Logic -->
+    <script>
+        // --- State & Data Management ---
+        const state = {
+            charts: {},
+            context: 'all'
+        };
+
+        const THEME = {
+            red: '#D32F2F',
+            gold: '#D4AF37',
+            dark: '#111111',
+            surface: '#1E1E1E',
+            border: '#333333',
+            text: '#F3F4F6'
+        };
+
+        Chart.defaults.color = THEME.text;
+        Chart.defaults.font.family = 'Inter, sans-serif';
+
+        // --- Chart Initialization ---
+        function initCharts() {
+            // Chart 1: Bar Chart (Total Cost of Ownership Comparison)
+            const ctxCost = document.getElementById('costChart').getContext('2d');
+            state.charts.cost = new Chart(ctxCost, {
+                type: 'bar',
+                data: {
+                    labels: ['Hardware Setup', 'Annual Licensing', 'Ongoing MSP Support'],
+                    datasets: [
+                        {
+                            label: 'Legacy Enterprise (e.g., Meraki)',
+                            data: [4500, 2500, 3600],
+                            backgroundColor: '#4B5563', // Muted Gray
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'XTech BusinessConnect (UniFi)',
+                            data: [3200, 0, 1428], // Highlighting $0 licensing
+                            backgroundColor: THEME.gold,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { color: THEME.text } },
+                        tooltip: { 
+                            backgroundColor: THEME.surface, 
+                            borderColor: THEME.border, 
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) { label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y); }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            grid: { color: THEME.border }, 
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Chart 2: Radar Chart (UniFi Ecosystem Integration)
+            const ctxEco = document.getElementById('ecosystemChart').getContext('2d');
+            state.charts.ecosystem = new Chart(ctxEco, {
+                type: 'radar',
+                data: {
+                    labels: ['Network/SD-WAN', 'Talk (VoIP)', 'Protect (CCTV)', 'Access (Doors)', 'Connect (EV/IoT)'],
+                    datasets: [{
+                        label: 'XTech Integration Capability',
+                        data: [100, 95, 100, 90, 85],
+                        backgroundColor: THEME.red + '40', // 25% opacity
+                        borderColor: THEME.red,
+                        pointBackgroundColor: THEME.gold,
+                        pointBorderColor: THEME.dark,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: THEME.border },
+                            grid: { color: THEME.border },
+                            pointLabels: { color: THEME.text, font: { size: 12 } },
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // --- Interactive Dashboard Context Switching ---
+        function updateDashboardContext(type) {
+            document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
+            
+            const insightText = document.getElementById('insight-text');
+            
+            if (type === 'msp') {
+                insightText.innerHTML = "<strong class='text-brand-gold'>BusinessConnect Focus:</strong> The bar chart illustrates our primary value proposition. By utilizing UniFi hardware, we completely eliminate annual software licensing fees, redirecting your budget toward active managed support and visual network documentation.";
+                document.getElementById('costChart').parentElement.parentElement.classList.add('border-brand-gold');
+                setTimeout(() => document.getElementById('costChart').parentElement.parentElement.classList.remove('border-brand-gold'), 2000);
+            } else if (type === 'ev') {
+                insightText.innerHTML = "<strong class='text-brand-red'>EV Charging Focus:</strong> See the Radar chart for 'Connect (EV/IoT)'. We integrate high-speed commercial charging stations directly into your primary network dashboard, utilizing automated load balancing to prevent electrical overdraw during peak hours.";
+                document.getElementById('ecosystemChart').parentElement.parentElement.classList.add('border-brand-red');
+                setTimeout(() => document.getElementById('ecosystemChart').parentElement.parentElement.classList.remove('border-brand-red'), 2000);
+            } else if (type === 'training') {
+                insightText.innerHTML = "<strong class='text-white'>Community Impact:</strong> Our short-term goal is to train 150+ Detroit residents in Ubiquiti certifications (UFSP, URSCA). This reduces the local IT talent shortage and ensures our SMB clients have access to a robust, highly skilled workforce.";
+            } else {
+                insightText.innerHTML = "<strong>Transparent Infrastructure:</strong> Every BusinessConnect deployment includes comprehensive visual tutorials and detailed network maps. We eliminate licensing fees and automate system maintenance, delivering average gross margin efficiencies of 55-60% for our clients.";
+            }
+        }
+
+        // --- Canvas Background (Circuit / Particle Tech Theme) ---
+        function initCanvas() {
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height, particles;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.8;
+                    this.vy = (Math.random() - 0.5) * 0.8;
+                    this.size = Math.random() * 2;
+                    // Mix of Red and Gold particles based on logo
+                    this.color = Math.random() > 0.8 ? THEME.red : THEME.gold; 
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const count = Math.min(Math.floor(width / 15), 100); 
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(212, 175, 55, ${0.2 * (1 - dist/120)})`; 
+                            ctx.lineWidth = 1;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => { resize(); initParticles(); });
+            resize();
+            initParticles();
+            animate();
+        }
+
+        // --- Intersection Observer for Scroll Animations ---
+        function initObservers() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        // Initialize charts only when dashboard comes into view
+                        if (entry.target.id === 'dashboard' && !state.charts.cost) {
+                            initCharts();
+                        }
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.fade-in-section, #dashboard').forEach(el => observer.observe(el));
+        }
+
+        // --- Utility Functions ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Transmission Successful';
+            btn.classList.remove('bg-brand-red');
+            btn.classList.add('bg-green-700');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.add('bg-brand-red');
+                btn.classList.remove('bg-green-700');
+                e.target.reset();
+            }, 3000);
+        }
+
+        // --- Boot ---
+        window.addEventListener('DOMContentLoaded', () => {
+            initCanvas();
+            initObservers();
+        });
+
+    </script>
 </body>
 </html>
