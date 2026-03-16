@@ -230,8 +230,7 @@
         Chart.defaults.color = THEME.text;
         Chart.defaults.font.family = '"EB Garamond", Garamond, serif';
 
-    window.onload = 
-            function() {
+    document.addEventListener('DOMContentLoaded', function() {
             // TCO Chart (Residential Focus)
             new Chart(document.getElementById('tcoResidentialChart').getContext('2d'), {
                 type: 'bar',
@@ -311,7 +310,7 @@
                     }
                 }
             });
-        };
+});
     </script>
 </body>
 </html>
