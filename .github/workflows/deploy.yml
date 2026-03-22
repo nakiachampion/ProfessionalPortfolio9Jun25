@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install Tailwind CSS
+        run: npm install tailwindcss
+
       - name: Compile Tailwind CSS
         run: npx tailwindcss -i ./src/input.css -o ./css/output.css --minify
 
