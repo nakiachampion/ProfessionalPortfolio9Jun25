@@ -5,55 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XTech | HomeConnect Residential Security</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Compiled Tailwind CSS -->
+    <link href="./css/output.css" rel="stylesheet">
+
     <!-- Chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>    <!-- Fonts: EB Garamond -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <!-- Fonts: EB Garamond -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            black: '#050505',    
-                            dark: '#111111',     
-                            surface: '#1E1E1E',  
-                            border: '#333333',   
-                            red: '#D32F2F',      
-                            gold: '#D4AF37',     
-                            text: '#F3F4F6',     
-                            muted: '#9CA3AF'     
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"EB Garamond"', 'Garamond', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #111111; color: #F3F4F6; -webkit-font-smoothing: antialiased; }
-        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 350px; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D32F2F; }
-        .bg-grid { background-image: linear-gradient(to right, #1E1E1E 1px, transparent 1px), linear-gradient(to bottom, #1E1E1E 1px, transparent 1px); background-size: 40px 40px; }
-        
-        /* Simulated Camera Feed Effect */
-        .cam-feed { position: relative; overflow: hidden; background: #0a0a0a; border: 1px solid #333; }
-        .cam-feed::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
-            pointer-events: none;
-        }
-        .recording-dot { animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-    </style>
 </head>
 <body class="bg-brand-dark min-h-screen flex flex-col font-sans">
 
@@ -191,19 +150,19 @@
                             <div class="flex-grow overflow-y-auto space-y-3 pr-2 font-mono text-xs">
                                 <div class="flex flex-col border-b border-brand-border pb-2">
                                     <span class="text-brand-muted">19:42:01 - TRIGGER: Driveway Vehicle</span>
-                                    <span class="text-brand-gold">> ACTION: Lutron Exterior Lights ON (100%)</span>
+                                    <span class="text-brand-gold">&gt; ACTION: Lutron Exterior Lights ON (100%)</span>
                                 </div>
                                 <div class="flex flex-col border-b border-brand-border pb-2">
                                     <span class="text-brand-muted">14:15:22 - TRIGGER: Doorbell Package AI</span>
-                                    <span class="text-green-500">> ACTION: Push Notification Sent</span>
+                                    <span class="text-green-500">&gt; ACTION: Push Notification Sent</span>
                                 </div>
                                 <div class="flex flex-col border-b border-brand-border pb-2">
                                     <span class="text-brand-muted">08:00:00 - TIME: Sunrise</span>
-                                    <span class="text-brand-muted">> ACTION: Lutron Porch Lights OFF</span>
+                                    <span class="text-brand-muted">&gt; ACTION: Lutron Porch Lights OFF</span>
                                 </div>
                                 <div class="flex flex-col pb-2">
                                     <span class="text-brand-muted">02:11:05 - TRIGGER: Backyard Motion</span>
-                                    <span class="text-brand-gold">> ACTION: Floodlight Activated</span>
+                                    <span class="text-brand-gold">&gt; ACTION: Floodlight Activated</span>
                                 </div>
                             </div>
                         </div>
